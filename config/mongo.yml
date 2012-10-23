@@ -11,9 +11,17 @@ test:
   database: tis_project_test
 
 # set these environment variables on your prod server
-production:
+#production:
 #  <<: *defaults
 #  database: tis_project
 #  username: <%= ENV['MONGO_USERNAME'] %>
 #  password: <%= ENV['MONGO_PASSWORD'] %>
-   uri: <%= ENV['MONGODB_URI'] %>
+#   uri: <%= ENV['MONGODB_URI'] %>
+
+production:
+  <<: *defaults
+  host: ds031637.mongolab.com
+  port:31637
+  username: administrador
+  password: administrador
+  database: heroku_app8600246
