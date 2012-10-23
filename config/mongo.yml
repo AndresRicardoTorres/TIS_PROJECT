@@ -1,8 +1,8 @@
 defaults: &defaults
   host: ds031637.mongolab.com
-  port: 31637  
+  port: 31637
   username: administrador
-  password: administrador  
+  password: administrador
   database: heroku_app8600246
   
 development:
@@ -10,7 +10,7 @@ development:
   database: tis_project_development
 
 test:
-  <<: *defaults
+  <<: *defaults  
   database: tis_project_test
 
 # set these environment variables on your prod server
@@ -23,4 +23,8 @@ test:
 
 production:
   <<: *defaults
-  
+  host: ds031637.mongolab.com
+  port: 31637  
+  username: administrador
+  password: administrador
+  database: heroku_app8600246  
