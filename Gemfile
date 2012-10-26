@@ -39,3 +39,5 @@ gem 'jquery-rails'
 # Richie(23Oct12) : Agrego gemas de mongoDB
 gem 'mongo_mapper'
 gem 'bson_ext'
+# Richie(26Oct12) : Agrego plugin para auth
+gem 'authlogic'
