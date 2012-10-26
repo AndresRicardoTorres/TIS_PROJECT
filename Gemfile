@@ -36,8 +36,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-# Richie(23Oct12) : Agrego gemas de mongoDB
+# (Richie@23Oct12) : Agrego gemas de mongoDB
 gem 'mongo_mapper'
 gem 'bson_ext'
-# Richie(26Oct12) : Agrego plugin para auth
+# (Richie@26Oct12) : Agrego plugin para autenticacion
 gem 'authlogic'
