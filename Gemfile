@@ -41,3 +41,4 @@ gem 'mongo_mapper'
 gem 'bson_ext'
 # (Richie@26Oct12) : Agrego plugin para autenticacion
 gem 'authlogic'
+gem "rails3-generators"

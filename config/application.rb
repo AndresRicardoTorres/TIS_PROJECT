@@ -64,5 +64,10 @@ module TISProject
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+     #Technically, you can initialize MongoMapper and use it to store data now. However, I like to configure Rails’ model generator. Inside of the Application class (config/application.rb) I add:
+     config.generators do |g|
+        g.orm :mongo_mapper
+      end
   end
 end
