@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-TISProject::Application.config.secret_token = 'b0209f6fcdd4f8c05203ed129c5bcefefa88f0bea648c544853ad499ad8b485b8f91f22a83749c6ac99b0278c3c6b6152436e302d514d75ec604d1e37f1bde71'
+TISProject::Application.config.secret_token = '1445de6b6d3443a50aa588c448d49e6c8bd3c98032c5a9957c0c19d7ac8174c6be3830e4e93f2bba4e05fd487a163fbe30502c5fa3a341c59dea0d0fe7f69f35'
