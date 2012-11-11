@@ -8,6 +8,6 @@ FactoryGirl.define do
     dependence "MyString"
     priotity 1
     iteration "MyString"
-    true_time "9.99"
+    true_time 1.5
   end
 end

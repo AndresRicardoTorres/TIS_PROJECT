@@ -6,5 +6,5 @@ class UserHistory
   field :dependence, type: String
   field :priotity, type: Integer
   field :iteration, type: String
-  field :true_time, type: Decimal
+  field :true_time, type: Float
 end
