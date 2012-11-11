@@ -31,7 +31,7 @@
 							<a href="/users" data-icon="grid">users</a>
 						</li>
 						<li>
-							<%= link_to "log out", session_path(current_user), :method => :delete, "data-icon" => "back" %>
+							<%= link_to "log out", destroy_user_session_path, :method=>'delete', "data-icon" => "back" %>
 						</li>
 						<% else %>
 						<li>
