@@ -1,4 +1,8 @@
 TISProject::Application.routes.draw do
+  resources :user_histories
+
+  resources :modulos
+
   resources :projects
 
   authenticated :user do

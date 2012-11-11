@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @user_history.id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @user_history.name %>
+</p>
+
+<p>
+  <b>Actors:</b>
+  <%= @user_history.actors %>
+</p>
+
+<p>
+  <b>Dependence:</b>
+  <%= @user_history.dependence %>
+</p>
+
+<p>
+  <b>Priotity:</b>
+  <%= @user_history.priotity %>
+</p>
+
+<p>
+  <b>Iteration:</b>
+  <%= @user_history.iteration %>
+</p>
+
+<p>
+  <b>True time:</b>
+  <%= @user_history.true_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_history_path(@user_history) %> |
+<%= link_to 'Back', user_histories_path %>

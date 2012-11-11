@@ -1,0 +1,25 @@
+<h1>Listing modulos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @modulos.each do |modulo| %>
+  <tr>
+    <td><%= modulo.name %></td>
+    <td><%= modulo.description %></td>
+    <td><%= link_to 'Show', modulo %></td>
+    <td><%= link_to 'Edit', edit_modulo_path(modulo) %></td>
+    <td><%= link_to 'Destroy', modulo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Modulo', new_modulo_path %>
