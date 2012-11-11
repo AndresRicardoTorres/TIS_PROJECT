@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%= content_for?(:title) ? yield(:title) : "WEM-MOD" %></title>
-        <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tis Project" %>">
-        <%= stylesheet_link_tag "application", :media => "all" %>
-        <%= javascript_include_tag "application" %>
-        <%= stylesheet_link_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.css", :media => "all" %>
-        <%= javascript_include_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.js" %>
-        <%= csrf_meta_tags %>
-        <%= yield(:head) %>
-    </head>
-    <body class="<%= controller_name %> <%= action_name %>">
-        <div id="container" class="container">
-            <header>
-                <%= render 'layouts/navigation' %>
-                <%= render 'layouts/messages' %>
-            </header>
-            <div id="main" role="main">
-                <%= yield %>
-            </div>
-            <footer></footer>
-        </div>
-        <!--! end of #container -->
-    </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title><%= content_for?(:title) ? yield(:title) : "WEM-MOD" %></title>
+		<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tis Project" %>">
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= stylesheet_link_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.css", :media => "all" %>
+		<%= javascript_include_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.js" %>
+		<%= csrf_meta_tags %>
+		<%= yield(:head) %>
+	</head>
+	<body class="<%= controller_name %> <%= action_name %>">
+		<div id="container" class="container" data-role="page" data-dom-cache="false">
+			<header>
+				<!-- <%= render 'layouts/navigation' %> -->
+				<div data-role="header">
+					<h1><%= yield :heading %></h1>
+				</div>
+				<%= render 'layouts/messages' %>
+			</header>
+			<div id="main" role="main">
+				<%= yield %>
+			</div>
+			<footer>
+				<div data-role="navbar" data-position="fixed">
+					<ul>
+						<% if false %>
+						<li>
+							<a href="/users" data-icon="grid">users</a>
+						</li>
+						<li>
+							<%= link_to "log out", session_path(current_user), :method => :delete, "data-icon" => "back" %>
+						</li>
+						<% else %>
+						<li>
+							<a href="#" data-rel="back" data-icon="back">back</a>
+						</li>
+						<li>
+							<%= link_to "log in", new_user_session_path, "data-icon" => "check" %>
+						</li>
+						<li>
+							<%= link_to "sign up", new_user_registration_path, "data-icon" => "plus"%>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--! end of #container -->
+	</body>
 </html>
