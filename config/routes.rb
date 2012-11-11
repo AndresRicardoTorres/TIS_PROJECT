@@ -6,12 +6,12 @@ TISProject::Application.routes.draw do
   resources :modulos
   resources :projects
 
-  devise_scope :user do
-    get "/", :to => "devise/sessions#new"
-  end
+  # devise_scope :user do
+    # get "/", :to => "devise/sessions#new"
+  # end
 
   authenticated :user do
-    root :to => 'project#index'
+    root :to => 'home#index'
   end
-  
+      root :to => 'home#index'
 end
