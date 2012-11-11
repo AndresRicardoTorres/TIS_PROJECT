@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user_history do
-    id ""
+    id "MyString"
     name ""
     actors "MyString"
     dependence "MyString"

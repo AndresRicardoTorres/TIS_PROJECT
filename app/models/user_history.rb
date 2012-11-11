@@ -1,6 +1,6 @@
 class UserHistory
   include Mongoid::Document
-  field :id, type: PrimaryKey
+  field :id, type: String
   field :name, type: String
   field :actors, type: String
   field :dependence, type: String
