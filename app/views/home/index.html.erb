@@ -1,4 +1,11 @@
-<h3>Home</h3>
+<% content_for :heading do %>
+Home
+<% end %>
+<h2>Lista de Usuarios</h2>
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
+<% end %>
+<h2>Lista de Proyectos</h2>
+<% @projects.each do |project| %>
+  <p>Project: <%=link_to project.name, project %></p>
 <% end %>

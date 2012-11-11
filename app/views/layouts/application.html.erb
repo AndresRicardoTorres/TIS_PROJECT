@@ -31,7 +31,10 @@
 						</li>
 						<% if current_user %>
 						<li>
-							<a href="/users" data-icon="grid">users</a>
+							<%= link_to "Usarios", users_path, "data-icon" => "grid" %>
+						</li>
+						<li>
+							<%= link_to "Proyectos", projects_path, "data-icon" => "grid" %>
 						</li>
 						<li>
 							<%= link_to "log out", destroy_user_session_path, :method=>'delete', "data-icon" => "back" %>

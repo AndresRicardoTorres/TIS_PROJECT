@@ -1,3 +1,9 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<% content_for :heading do %>
+Usuario
+<% end %>
+<p>
+	User: <%= @user.name %>
+</p>
+<p>
+	Email: <%= @user.email if @user.email %>
+</p>
