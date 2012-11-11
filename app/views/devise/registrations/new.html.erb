@@ -6,17 +6,22 @@ Sign up
 <%= devise_error_messages! %>
 <fieldset>
 	<div data-role="fieldcontain">
+		<%= f.label :name %>	
+		<%= f.text_field :name %></p>
+	</div>
+
+	<div data-role="fieldcontain">
 		<%= f.label :email %>
 		<%= f.email_field :email %>
 	</div>
 
 	<div data-role="fieldcontain">
-		<%= f.label :password %>		
+		<%= f.label :password %>
 		<%= f.password_field :password %>
 	</div>
 
 	<div data-role="fieldcontain">
-		<%= f.label :password_confirmation %>		
+		<%= f.label :password_confirmation %>
 		<%= f.password_field :password_confirmation %>
 	</div>
 
