@@ -41,10 +41,10 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-
+	
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to(@project, notice: 'Project was successfully created.') }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to(projects_url) }
       format.json { head :no_content }
     end
   end

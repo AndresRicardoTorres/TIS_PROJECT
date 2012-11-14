@@ -8,7 +8,7 @@ class UserHistoriesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @user_histories }
     end
-  end
+  end 
 
   # GET /user_histories/1
   # GET /user_histories/1.json
@@ -19,7 +19,7 @@ class UserHistoriesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @user_history }
     end
-  end
+  end 
 
   # GET /user_histories/new
   # GET /user_histories/new.json
@@ -30,27 +30,20 @@ class UserHistoriesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @user_history }
     end
-  end
+  end 
 
   # GET /user_histories/1/edit
-  def edit
+   def edit
     @user_history = UserHistory.find(params[:id])
-  end
+  end 
 
   # POST /user_histories
   # POST /user_histories.json
   def create
-    @user_history = UserHistory.new(params[:user_history])
-
-    respond_to do |format|
-      if @user_history.save
-        format.html { redirect_to @user_history, notice: 'User history was successfully created.' }
-        format.json { render json: @user_history, status: :created, location: @user_history }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user_history.errors, status: :unprocessable_entity }
-      end
-    end
+	@project = Project.find(params[:project_id])
+    @user_history = @project.user_histories.create!(params[:user_history])
+	redirect_to @project, :notice => "User History created!"
+    
   end
 
   # PUT /user_histories/1
@@ -67,11 +60,11 @@ class UserHistoriesController < ApplicationController
         format.json { render json: @user_history.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end 
 
   # DELETE /user_histories/1
   # DELETE /user_histories/1.json
-  def destroy
+   def destroy
     @user_history = UserHistory.find(params[:id])
     @user_history.destroy
 
@@ -79,5 +72,5 @@ class UserHistoriesController < ApplicationController
       format.html { redirect_to user_histories_url }
       format.json { head :no_content }
     end
-  end
+  end 
 end
