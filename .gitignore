@@ -75,3 +75,6 @@ pickle-email-*.html
 
 # vim artifacts
 **.swp
+
+# text editor temporal files
+**~
