@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><%= content_for?(:title) ? yield(:title) : "WEM-MOD" %></title>
 		<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tis Project" %>">
 		<%= stylesheet_link_tag "application", :media => "all" %>
@@ -12,24 +12,22 @@
 		<%= yield(:head) %>
 	</head>
 	<body class="<%= controller_name %> <%= action_name %>">
-		<div id="container" class="container" data-role="page" data-dom-cache="false">
-			<header>
-				<!-- <%= render 'layouts/navigation' %> -->
-				<div data-role="header">
-					<h1><%= yield :heading %></h1>
+		<div id="container" class="container" data-role="page" data-theme="b" data-dom-cache="false" >
+				<div data-role="header" data-theme="a" id="page">
+					<div class="logo" ></div>
 				</div>
-				<%= render 'layouts/messages' %>
-			</header>
+				<!--! end of #container <%= render 'layouts/messages' %> -->
 			<div id="main" role="main"  data-role="content">
+				<h1><%= yield :heading %></h1>
 				<%= yield %>
 			</div>
 			<footer>
 				<div data-role="navbar" data-position="fixed">
 					<ul>
+						<% if current_user %>
 						<li>
 							<a href="#" data-rel="back" data-icon="back">back</a>
 						</li>
-						<% if current_user %>
 						<li>
 							<%= link_to "Usarios", users_path, "data-icon" => "grid" %>
 						</li>

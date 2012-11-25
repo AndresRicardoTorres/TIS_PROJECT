@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title><%= content_for?(:title) ? yield(:title) : "WEM-MOD" %></title>
+		<meta charset="utf-8" name="description" content="<%= content_for?(:description) ? yield(:description) : "Tis Project" %>">
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= stylesheet_link_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.css", :media => "all" %>
+		<%= javascript_include_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.js" %>
+		<%= csrf_meta_tags %>
+		<%= yield(:head) %>
+	</head>
+	body>
+        <!-- Inicio de sesion -->
+        <div data-role="page" data-theme="b" id="page1">
+            <div id="header" data-theme="a" data-role="header">
+                <h3>
+                    Sign in
+                </h3>
+            </div>
+            <div data-role="content">
+                <form action="">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="email">
+                                Email
+                            </label>
+                            <input name="email" id="email" placeholder="" value="" type="text">
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="password">
+                                Contraseña
+                            </label>
+                            <input name="password" id="password" placeholder="" value="" type="password">
+                        </fieldset>
+                    </div>
+                    <div id="remember" data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="vertical">
+                            <legend>
+                            </legend>
+                            <input id="checkbox1" name="" type="checkbox">
+                            <label for="checkbox1">
+                                Mantener sesión iniciada
+                            </label>
+                        </fieldset>
+                    </div>
+                    <input id="sign_in" value="Iniciar sesion" type="submit">
+                </form>
+            </div>
+            <div id="tab_bar_2" data-role="tabbar" data-iconpos="top" data-theme="a">
+                <ul>
+                    <li>
+                        <a href="#" data-theme="" data-icon="check">
+                            Iniciar sesión
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#page6" data-theme="" data-icon="plus">
+                            Registrarse
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Proyectos (Home) -->
+        <div data-role="page" data-theme="b" id="page6">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Inicio
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Cuenta
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <h2 id="projects_label">
+                    Proyectos
+                </h2>
+                <div>
+                    <a href="#page10" data-transition="fade">
+                        Nuevo proyecto
+                    </a>
+                </div>
+                <h3>
+                    Proyecto 01 (link)
+                </h3>
+                <div>
+                    <p>
+                        <span style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla metus,
+                            egestas...
+                            <br>
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page9" data-transition="fade">
+                        Ver | Editar | Eliminar
+                    </a>
+                </div>
+                <h3>
+                    Proyecto 02 (link)
+                </h3>
+                <div>
+                    <p>
+                        <span style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla metus,
+                            egestas...
+                            <br>
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page9" data-transition="fade">
+                        Ver | Editar | Eliminar
+                    </a>
+                </div>
+                <div>
+                    <p style="text-align: center;" data-mce-style="text-align: center;">
+                        <span data-mce-bogus="true" id="_mce_caret">
+                            <span style="color: rgb(51, 102, 255);">
+                                ?
+                            </span>
+                        </span>
+                        <span style="color: rgb(0, 0, 255);">
+                            &lt;&lt; Anterior&nbsp; &nbsp;&nbsp; 1 &nbsp; &nbsp; 2 &nbsp;&nbsp; Siguiente
+                            &gt;&gt;
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page10" data-transition="fade">
+                        Nuevo proyecto
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Detalle Proyecto -->
+        <div data-role="page" data-theme="b" id="page9">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Detalle de Proyecto
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page12" data-theme="" data-icon="">
+                                Configuración
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Cuenta
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <h2 id="projects_label">
+                    Proyecto 01
+                </h2>
+                <div>
+                    <p>
+                        <span style="font-size: small;" data-mce-style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dui nisi,
+                            convallis id suscipit sit amet.
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page6" data-transition="fade">
+                        Editar | Volver
+                    </a>
+                </div>
+                <h3 id="projects_label">
+                    Historias de Usuario
+                </h3>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <h4>
+                            ID
+                        </h4>
+                    </div>
+                    <div class="ui-block-b">
+                        <h4>
+                            Nombre
+                        </h4>
+                    </div>
+                    <div class="ui-block-a">
+                        <div>
+                            <p>
+                                HU01
+                            </p>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div>
+                            <p>
+                                Registrar usuarios
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="" data-transition="fade">
+                        Nueva Historia de Usuario
+                    </a>
+                </div>
+                <div>
+                    <p style="text-align: center;" data-mce-style="text-align: center;">
+                        <span data-mce-bogus="true" id="_mce_caret">
+                            <span style="color: rgb(51, 102, 255);">
+                                ?
+                            </span>
+                        </span>
+                        <span style="color: rgb(0, 0, 255);">
+                            &lt;&lt; Anterior&nbsp; &nbsp;&nbsp; 1 &nbsp; &nbsp; 2 &nbsp;&nbsp; Siguiente
+                            &gt;&gt;
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Nuevo Proyecto -->
+        <div data-role="page" data-theme="b" id="page10">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Nuevo Proyecto
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <form action="">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="project_name">
+                                Nombre:
+                            </label>
+                            <input name="project_name" id="project_name" placeholder="" value="" type="text">
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textarea1">
+                                Descripción:
+                            </label>
+                            <textarea name="" id="textarea1" placeholder=""></textarea>
+                        </fieldset>
+                    </div>
+                    <input data-icon="check" data-iconpos="left" value="Crear Proyecto" type="submit">
+                </form>
+                <div>
+                    <a href="#page6" data-transition="fade">
+                        Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Módulos -->
+        <div data-role="page" data-theme="b" id="page15">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Inicio
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Configuración
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Cuenta
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <h2 id="projects_label">
+                    Módulos
+                </h2>
+                <div>
+                    <a href="#page11" data-transition="fade">
+                        Nuevo Modulo
+                    </a>
+                </div>
+                <h3>
+                    Modulo 01 (link)
+                </h3>
+                <div>
+                    <p>
+                        <span style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla metus,
+                            egestas...
+                            <br>
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page9" data-transition="fade">
+                        Ver | Editar | Eliminar
+                    </a>
+                </div>
+                <h3>
+                    Modulo 02 (link)
+                </h3>
+                <div>
+                    <p>
+                        <span style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla metus,
+                            egestas...
+                            <br>
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="" data-transition="fade">
+                        Ver | Editar | Eliminar
+                    </a>
+                </div>
+                <div>
+                    <p style="text-align: center;" data-mce-style="text-align: center;">
+                        <span data-mce-bogus="true" id="_mce_caret">
+                            <span style="color: rgb(51, 102, 255);">
+                                ?
+                            </span>
+                        </span>
+                        <span style="color: rgb(0, 0, 255);">
+                            &lt;&lt; Anterior&nbsp; &nbsp;&nbsp; 1 &nbsp; &nbsp; 2 &nbsp;&nbsp; Siguiente
+                            &gt;&gt;
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page11" data-transition="fade">
+                        Nuevo Modulo
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Detalle Modulo -->
+        <div data-role="page" data-theme="b" id="page14">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Detalle de Modulo
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <h2 id="projects_label">
+                    Modulo 01
+                </h2>
+                <div>
+                    <p>
+                        <span style="font-size: small;" data-mce-style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dui nisi,
+                            convallis id suscipit sit amet.
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page6" data-transition="fade">
+                        Editar | Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Nuevo Modulo -->
+        <div data-role="page" data-theme="b" id="page11">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Nuevo Modulo
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <form action="">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="project_name">
+                                Nombre:
+                            </label>
+                            <input name="project_name" id="project_name" placeholder="" value="" type="text">
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textarea2">
+                                Descripcion:
+                            </label>
+                            <textarea name="" id="textarea2" placeholder=""></textarea>
+                        </fieldset>
+                    </div>
+                    <input data-icon="check" data-iconpos="left" value="Crear Módulo" type="submit">
+                </form>
+                <div>
+                    <a href="#page15" data-transition="fade">
+                        Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Configuracion -->
+        <div data-role="page" data-theme="b" id="page12">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Configuracion
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page12" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+                                Configuración
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page12" data-theme="" data-icon="">
+                                Cuenta
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Secciones
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page15" data-transition="slide">
+                            Modulos
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page11" data-transition="slide">
+                            Parametros
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page17" data-transition="slide">
+                            Historias de Usuario
+                        </a>
+                    </li>
+                </ul>
+                <div>
+                    <a href="#page6" data-transition="fade">
+                        Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Historias de Usuario -->
+        <div data-role="page" data-theme="b" id="page17">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Historias de Usuario
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page12" data-theme="" data-icon="">
+                                Configuracion
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page6" data-theme="" data-icon="">
+                                Cuenta
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <h2 id="projects_label">
+                    Historias de Usuario
+                </h2>
+                <div>
+                    <a href="#page18" data-transition="fade">
+                        Nueva Historia de Usuario
+                    </a>
+                </div>
+                <h3>
+                    HU001 - Registrar usuarios (link)
+                </h3>
+                <div>
+                    <p>
+                        <span style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla metus,
+                            egestas...
+                            <br>
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page19" data-transition="fade">
+                        Ver | Editar | Eliminar
+                    </a>
+                </div>
+                <h3>
+                    HU002 - Crear producto (link)
+                </h3>
+                <div>
+                    <p>
+                        <span style="font-size: small;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla metus,
+                            egestas...
+                            <br>
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page19" data-transition="fade">
+                        Ver | Editar | Eliminar
+                    </a>
+                </div>
+                <div>
+                    <p style="text-align: center;" data-mce-style="text-align: center;">
+                        <span data-mce-bogus="true" id="_mce_caret">
+                            <span style="color: rgb(51, 102, 255);">
+                                ?
+                            </span>
+                        </span>
+                        <span style="color: rgb(0, 0, 255);">
+                            &lt;&lt; Anterior&nbsp; &nbsp;&nbsp; 1 &nbsp; &nbsp; 2 &nbsp;&nbsp; Siguiente
+                            &gt;&gt;
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <a href="#page17" data-transition="fade">
+                        Nuevo Historia de Usuario
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Nueva Historia de Usuario -->
+        <div data-role="page" data-theme="b" id="page18">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Nueva Historia de Usuario
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <form action="">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="project_name">
+                                Nombre:
+                            </label>
+                            <input name="project_name" id="project_name" placeholder="" value="" type="text">
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textarea5">
+                                Descripcion:
+                            </label>
+                            <textarea name="" id="textarea5" placeholder=""></textarea>
+                        </fieldset>
+                    </div>
+                    <input data-icon="check" data-iconpos="left" value="Crear Historia de Usuario"
+                    type="submit">
+                </form>
+                <div>
+                    <a href="#page17" data-transition="fade">
+                        Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Detalle Historia de Usuario -->
+        <div data-role="page" data-theme="b" id="page19">
+            <div id="header" data-theme="a" data-role="header">
+                <h3 id="home">
+                    Detalle de Historia de Usuario
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 10px">
+                <div>
+                    <p style="text-align: left;">
+                        Mensajes de notificacion
+                    </p>
+                </div>
+                <h2 id="projects_label">
+                    HU001 - Registrar usuarios
+                </h2>
+                <div>
+                    <a href="#page17" data-transition="fade">
+                        Editar | Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script>
+              //App custom javascript
+        </script>
+    </body>
+</html>
