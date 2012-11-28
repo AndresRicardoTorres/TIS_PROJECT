@@ -1,0 +1,52 @@
+<%= form_for :estimation do |f| %>
+
+  <% if @estimation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
+
+      <ul>
+      <% @estimation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+  
+  
+  <div class="field">
+    <%= f.label :total_metrics%><br />
+    <%= f.text_field :total_metrics, :placeholder => "Total métricas"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_complexity %><br />
+    <%= f.text_field :total_complexity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :view_type_factor %><br />
+    <%= f.text_field :view_type_factor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :percentage_reuse %><br />
+    <%= f.text_field :percentage_reuse %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_web_points %><br />
+    <%= f.text_field :total_web_points %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :effort %><br />
+    <%= f.text_field :effort %>
+  </div>	
+	
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
