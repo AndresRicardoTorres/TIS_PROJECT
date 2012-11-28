@@ -10,4 +10,6 @@ class Estimation
   has_one :complexity 
   has_one :metric
   has_one :view_type 
+  
+  accepts_nested_attributes_for :complexity
 end
