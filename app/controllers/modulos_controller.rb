@@ -1,4 +1,5 @@
 class ModulosController < ApplicationController
+  before_filter :authenticate_user!
   # GET /modulos
   # GET /modulos.json
   def index
