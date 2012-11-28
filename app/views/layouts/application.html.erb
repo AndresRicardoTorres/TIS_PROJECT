@@ -3,11 +3,9 @@
 	<head>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><%= content_for?(:title) ? yield(:title) : "WEM-MOD" %></title>
-		<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tis Project" %>">
+		<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tis Project" %>">		
 		<%= stylesheet_link_tag "application", :media => "all" %>
-		<%= javascript_include_tag "application" %>
-		<%= stylesheet_link_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.css", :media => "all" %>
-		<%= javascript_include_tag "http://code.jquery.com/mobile/latest/jquery.mobile.min.js" %>
+		<%= javascript_include_tag "application" %>		
 		<%= csrf_meta_tags %>
 		<%= yield(:head) %>
 	</head>
