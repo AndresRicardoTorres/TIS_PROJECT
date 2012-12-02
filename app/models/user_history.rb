@@ -6,6 +6,11 @@ class UserHistory
   field :dependence, type: String
   field :priotity, type: Integer
   field :iteration, type: String
+  field :description, type: String
+  field :comments, type: String
   field :true_time, type: Float
-  embedded_in :project, :inverse_of => :user_histories
+  field :creation_date, type: Date
+  field :modification_date, type: Date
+  
+  belongs_to :project
 end

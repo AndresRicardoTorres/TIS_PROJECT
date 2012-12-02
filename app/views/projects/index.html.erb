@@ -1,25 +1,24 @@
 <% content_for :heading do %>
-Proyectos
+Projects
 <% end %>
-<table border="1">
+<div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+	<table>
 	<tr>
-		<th>Name</th>
-		<th>Description</th>
-		<th></th>
-		<th></th>
-		<th></th>
+		<td><b>Project</b></td>
+		<td><b>Description</b></td>
+		<td><b>Action</b></td>
 	</tr>
-
 	<% @projects.each do |project| %>
 	<tr>
-		<td><%= project.name %></td>
+		<td><%= link_to project.name, project %></td>
 		<td><%= project.description %></td>
-		<td><%= link_to 'Show', project %></td>
-		<td><%= link_to 'Edit', edit_project_path(project) %></td>
-		<td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	</tr>
 	<% end %>
-</table>
+	</table>
+	</fieldset>
+</div>
 
 <br />
 

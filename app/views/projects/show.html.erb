@@ -1,38 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
-
-<% if @project.user_histories.size > 0 %>
-  <h2>User History</h2>
-  <% for user_history in @project.user_histories %>
-    <h3><%= user_history.name %></h3>
-    <p><%= user_history.actors %></p>
-	<p><%= user_history.dependence %></p>
-	<p><%= user_history.priotity %></p>
-	<p><%= user_history.iteration %></p>
-  <% end %>
+<% content_for :heading do %>
+Project Details
 <% end %>
 
-<h2>New User History</h2>
+<p id="notice"><%= notice %></p>
 
-	<%= form_for [@project, UserHistory.new] do |uh| %>
-		<p><%= uh.label :cod %> <%= uh.text_field :cod %></p>
-		<p><%= uh.label :name %> <%= uh.text_field :name %></p>
-		<p><%= uh.label :actors %> <%= uh.text_field :actors %></p>
-		<p><%= uh.label :dependence %> <%= uh.text_field :dependence %></p>
-		<p><%= uh.label :priotity %> <%= uh.text_field :priotity %></p>
-		<p><%= uh.label :iteration %> <%= uh.text_field :iteration %></p>
-		<p><%= uh.label :true_time %> <%= uh.text_field :true_time %></p>
-		<p><%= uh.submit "Create User History" %></p>
-	<% end %>
+<div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+		<p><b>Name:</b><%= @project.name %></p>
+		<p><b>Description:</b><%= @project.description %></p>
+		<% if @project.user_histories.size > 0 %>
+			<fieldset class="ui-grid-a">
+				<h2>User Histories</h2>
+				<% for user_history in @project.user_histories %>
+				<p>User History: <%=link_to user_history.name, user_history %></p>
+				<% end %>
+			</fieldset>
+		<% else %>
+			<%= link_to 'New User history', :controller => "user_histories", :action => "new", :project_id => @project %>
+		<% end %>
+	</fieldset>
+</div>
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

@@ -1,9 +1,11 @@
 <% content_for :heading do %>
-Home
+Project List
 <% end %>
-<h2>Lista de Proyectos</h2>
-<% @projects.each do |project| %>
-  <p>Project: <%=link_to project.name, project %></p>
-<% end %>
-  
+<div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+		<% @projects.each do |project| %>
+			<p>Project: <%=link_to project.name, project %></p>
+		<% end %>
+	</fieldset>
+</div>
 <%= link_to 'New Project', new_project_path %>

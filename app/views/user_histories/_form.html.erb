@@ -10,36 +10,32 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :actors %><br />
-    <%= f.text_field :actors %>
-  </div>
-  <div class="field">
-    <%= f.label :dependence %><br />
-    <%= f.text_field :dependence %>
-  </div>
-  <div class="field">
-    <%= f.label :priotity %><br />
-    <%= f.number_field :priotity %>
-  </div>
-  <div class="field">
-    <%= f.label :iteration %><br />
-    <%= f.text_field :iteration %>
-  </div>
-  <div class="field">
-    <%= f.label :true_time %><br />
-    <%= f.text_field :true_time %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :name %><%= f.text_field :name %></div></div>
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :actors %><%= f.text_field :actors %></div></div>
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :priotity %><%= f.number_field :priotity %></div></div>
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :iteration %><%= f.text_field :iteration %></div></div>			
+	</fieldset>
+	<fieldset class="ui-grid-solo">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :dependence %></div></div>
+		<div class="ui-block-a"><div data-mini="true"><%= f.text_field :dependence %></div></div>
+	</fieldset>
+	<fieldset class="ui-grid-solo">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :description %></div></div>
+		<div class="ui-block-a"><div data-mini="true"><%= f.text_area :description %></div></div>
+	</fieldset>
+	<fieldset class="ui-grid-solo">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :comments %></div></div>
+		<div class="ui-block-a"><div data-mini="true"><%= f.text_area :comments %></div></div>
+	</fieldset>
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :creation_date %><%= f.text_field :creation_date %></div></div>
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :modification_date %><%= f.text_field :modification_date %></div></div>		
+	</fieldset>
+	<fieldset class="ui-grid-solo">
+		<div class="ui-block-a"><%= f.submit %></div>
+	</fieldset>
+	
+</div>
 <% end %>
