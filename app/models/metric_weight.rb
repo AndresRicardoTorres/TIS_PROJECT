@@ -1,8 +1,6 @@
-class ParamCategory
+class MetricWeight
   include Mongoid::Document
   field :name, type: String
   field :description, type: String
-  
-  embedded_in :parameter
-  
+  field :weight, type: Float
 end

@@ -1,0 +1,10 @@
+<h1>Estimation#index</h1>
+<p>Find me in app/views/estimation/index.html.erb</p>
+<table>
+<%= @parameters.length %>
+ <% @parameters.each do |para| %>
+	<tr>
+		<td><%= para.value %></td>
+	</tr>
+	<% end %>
+</table>

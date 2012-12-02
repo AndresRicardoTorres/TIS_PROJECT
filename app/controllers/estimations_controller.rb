@@ -1,5 +1,5 @@
-class EstimationController < ApplicationController
-  def index
+class EstimationsController < ApplicationController
+ def index
     @estimations = Estimation.all
     # @sec_id = ParamSection.where(name: "complexity")
     # @params = Parameter.where(:param_section_id => { "$in" => @sec_id})

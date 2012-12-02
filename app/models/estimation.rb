@@ -7,9 +7,7 @@ class Estimation
   field :total_web_points, type: Float
   field :effort, type: Float
   
-  has_one :complexity 
-  has_one :metric
-  has_one :view_type 
-  
-  accepts_nested_attributes_for :complexity
+  # has_many :parameters 
+  embeds_many :metric_parameters
+  accepts_nested_attributes_for :metric_parameters
 end

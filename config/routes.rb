@@ -1,18 +1,39 @@
 TISProject::Application.routes.draw do
 
-  get "estimation/index"
+  get "estimations/index"
 
-  get "estimation/show"
+  get "estimations/new"
 
-  get "estimation/new"
+  get "estimations/edit"
 
-  get "estimation/edit"
+  get "estimations/create"
 
-  get "estimation/create"
+  get "estimations/update"
 
-  get "estimation/update"
+  get "estimations/destroy"
 
-  get "estimation/destroy"
+  # get "metric_parameter/new"
+
+  # get "metric_parameter/create"
+
+  # get "estimation/index"
+
+  # get "estimation/show"
+
+  # get "estimation/new"
+
+  # get "estimation/edit"
+
+  # get "estimation/create"
+
+  # get "estimation/update"
+
+  # get "estimation/destroy"
+  
+  resources :estimation do
+    resources :metric_parameter
+  end
+  
 
   devise_for :users
   resources :users
