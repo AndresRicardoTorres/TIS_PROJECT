@@ -11,45 +11,45 @@
       </ul>
     </div>
   <% end %>
-  <p>hola -- </p>
   
   <%=f.fields_for :metric_parameters do |builder| %>
-    <h2><%= builder.object.description %> </h2>
-       
+  
+<div data-role="collapsible" data-theme="b" data-content-theme="b">  
+    <h2><%= builder.object.description %> </h2>     
     <div class="ui-grid-b">
       <div class="ui-block-a">
         <%= builder.label :optimistic_value %><br />
-        <%= builder.text_field :optimistic_value %>
+        <%= builder.text_field :optimistic_value, :value=>0 %>
       </div>
       <div class="ui-block-b">
         <%= builder.label :probable_value %><br />
-        <%= builder.text_field :probable_value %>
+        <%= builder.text_field :probable_value, :value=>0 %>
       </div>
       <div class="ui-block-c">
         <%= builder.label :pessimistic_value %><br />
-        <%= builder.text_field :pessimistic_value %>
+        <%= builder.text_field :pessimistic_value, :value=>0 %>
       </div>
     </div><!-- /grid-b -->
     
     <div class="ui-grid-b">
       <div class="ui-block-a">
         <%= builder.label :value %><br />
-        <%= builder.text_field :value %>
+        <%= builder.text_field :value, :value=>0 %>
       </div>
       <div class="ui-block-b">
         <%= builder.label :weight %><br />
-        <%= builder.text_field :weight %>
+        <%= builder.text_field :weight, :disabled=>true %>
       </div>
       <div class="ui-block-c">
         <%= builder.label :quantity %><br />
-        <%= builder.text_field :quantity %>
+        <%= builder.text_field :quantity, :value=>0 %>
       </div>
     </div><!-- /grid-b -->
+</div>
   <% end %>
-  <p>--hola</p>
    
   <div class="field">
-    <%= f.label :total_metrics%><br />
+	<h3>Total Integración Funcional - Persistencia sin Ajustar </h3>
     <%= f.text_field :total_metrics, :placeholder => "Total métricas"%>
   </div>
 
