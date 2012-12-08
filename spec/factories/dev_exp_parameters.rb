@@ -1,8 +1,12 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :param_section do
+  factory :dev_exp_parameter do
     name ""
     description ""
+    label ""
+    value ""
+    level ""
+    section ""
   end
 end

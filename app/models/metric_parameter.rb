@@ -9,6 +9,6 @@ class MetricParameter
   field :probable_value, type: Float
   field :pessimistic_value, type: Float
   
-  embeds_one :param_section
+  # embeds_one :param_section
   embedded_in :estimation, :inverse_of => :metric_parameters
 end

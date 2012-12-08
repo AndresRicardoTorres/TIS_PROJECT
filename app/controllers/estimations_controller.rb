@@ -9,7 +9,7 @@ class EstimationsController < ApplicationController
     
     # workout_ids = Workout.where(:user_id => current_user.id ).all.collect { |w| w.id }
     # exercises = Exercise.where(:workout_id => { "$in" => workout_ids })
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -22,6 +22,7 @@ class EstimationsController < ApplicationController
   end
   
   def show
+    @atrapado = params
   end
 
   def new
@@ -34,7 +35,22 @@ class EstimationsController < ApplicationController
     @metric_weights.each do |m|
        @estimation.metric_parameters.new(name: m.name, description: m.description, weight: m.weight)
     end
-        
+    
+    # @ops  = BusinessLogicAssociatedParameter.where(name: "assoc_business_logic").map { |par| [(par.level + " (" + par.value.to_s + ")"), par.id] }
+    @business_logic_opts  = BusinessLogicAssociatedParameter.all.map { |par| [par.label, par.id] }
+    @code_gen_help_opts  = CodeGenHelpParameter.all.map { |par| [par.label, par.id] }
+    @developer_exp_opts  = DevExpParameter.where(name: "developer_exp").map { |par| [par.label, par.id] }
+    @view_type_master_opts  = ViewTypeParameter.where(name: "master").map { |par| [par.label, par.id] }
+    @view_type_master_detail_opts  = ViewTypeParameter.where(name: "master_detail").map { |par| [par.label, par.id] }
+    @view_type_process_opts  = ViewTypeParameter.where(name: "process").map { |par| [par.label, par.id] }
+    @view_type_graphics_opts  = ViewTypeParameter.where(name: "graphics_interactive").map { |par| [par.label, par.id] }
+    @view_type_basic_report_opts  = ViewTypeParameter.where(name: "basic_report").map { |par| [par.label, par.id] }
+    @view_type_graphic_report_opts  = ViewTypeParameter.where(name: "graphic_report").map { |par| [par.label, par.id] }
+    @view_type_mixed_report_opts  = ViewTypeParameter.where(name: "mixed_report").map { |par| [par.label, par.id] }
+    @view_type_na_opts  = ViewTypeParameter.where(name: "na").map { |par| [par.label, par.id] }
+    
+    @bus_logic = BusinessLogicAssociatedParameter.all
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @estimation}
@@ -56,7 +72,6 @@ class EstimationsController < ApplicationController
 
   def create
     @estimation = Estimation.new(params[:estimation])
-	
     respond_to do |format|
       if @estimation.save
         format.html { redirect_to(@estimation, notice: 'Project was successfully created.') }
@@ -73,4 +88,17 @@ class EstimationsController < ApplicationController
 
   def destroy
   end
+  
+  def test
+    @pars = Parameter.where(name: "assoc_business_logic")
+    @ops  = Parameter.where(name: "assoc_business_logic").map { |par| [par.label, par.id] }
+    
+    @atrapado = params[:assoc_business_logic]
+    
+  end
+  
+  def gettest
+    @atrapado = params[:assoc_business_logic]
+  end
+  
 end

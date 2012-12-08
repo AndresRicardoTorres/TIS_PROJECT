@@ -1,5 +1,8 @@
 TISProject::Application.routes.draw do
 
+  get '/estimations/test'
+  post '/estimations/gettest'
+  
   resources :estimations do
     resources :metric_parameters
   end

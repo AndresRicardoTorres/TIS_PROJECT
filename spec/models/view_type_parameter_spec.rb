@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ParamLevel do
+describe ViewTypeParameter do
   pending "add some examples to (or delete) #{__FILE__}"
 end

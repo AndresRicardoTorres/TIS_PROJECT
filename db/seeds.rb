@@ -27,6 +27,84 @@ met_weight_04 = MetricWeight.create! :name => 'ext_sys_interface_api',      :des
 met_weight_05 = MetricWeight.create! :name => 'ext_sys_interface_protocol', :description => 'Interfases sistemas externos - Protocolo',  :weight => '1.5'
 
 
+puts '  Complexity Adjustment'
+
+param_01 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '2.0',  :level => 'very_high', :label => 'Muy alta (2.0)', :section => 'Ajuste de complejidad'  
+param_02 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '1.0',  :level => 'high',      :label => 'Alta (1.0)',     :section => 'Ajuste de complejidad'  
+param_03 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '0.5',  :level => 'mid',       :label => 'Media (0.5)',    :section => 'Ajuste de complejidad'  
+param_04 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '0.1',  :level => 'low',       :label => 'Baja (0.1)',     :section => 'Ajuste de complejidad'
+
+param_05 = CodeGenHelpParameter.create! :name => 'code_gen_help', :description => 'Ayuda mediante generador de codigo', :value => '0.5',  :level => 'high',      :label => 'Alta (0.5)',     :section => 'Ajuste de complejidad'  
+param_06 = CodeGenHelpParameter.create! :name => 'code_gen_help', :description => 'Ayuda mediante generador de codigo', :value => '0.75', :level => 'mid',       :label => 'Media (0.75)',   :section => 'Ajuste de complejidad'  
+param_07 = CodeGenHelpParameter.create! :name => 'code_gen_help', :description => 'Ayuda mediante generador de codigo', :value => '0.95', :level => 'low',       :label => 'Baja (0.95)',    :section => 'Ajuste de complejidad'  
+
+param_08 = DevExpParameter.create! :name => 'developer_exp', :description => 'Experiencia del desarrollador',      :value => '0.5',  :level => 'high',      :label => 'Alta (0.5)',     :section => 'Ajuste de complejidad'  
+param_09 = DevExpParameter.create! :name => 'developer_exp', :description => 'Experiencia del desarrollador',      :value => '0.75', :level => 'mid',       :label => 'Media (0.75)',   :section => 'Ajuste de complejidad'  
+param_10 = DevExpParameter.create! :name => 'developer_exp', :description => 'Experiencia del desarrollador',      :value => '0.95', :level => 'low',       :label => 'Baja (0.95)',    :section => 'Ajuste de complejidad'
+
+param_11 = ViewTypeParameter.create! :name => 'master',        :description => 'Maestro',                :value => '1.08', :level => 'low',       :label => 'Baja (1.08)',    :section => 'Tipo de Pantalla'
+param_12 = ViewTypeParameter.create! :name => 'master',        :description => 'Maestro',                :value => '1.2',  :level => 'mid',       :label => 'Media (1.2)',    :section => 'Tipo de Pantalla'
+param_13 = ViewTypeParameter.create! :name => 'master',        :description => 'Maestro',                :value => '1.3',  :level => 'high',      :label => 'Alta (1.3)',     :section => 'Tipo de Pantalla'
+
+param_14 = ViewTypeParameter.create! :name => 'master_detail', :description => 'Maestro - Detalle',      :value => '1.1',  :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+param_15 = ViewTypeParameter.create! :name => 'master_detail', :description => 'Maestro - Detalle',      :value => '1.3',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+param_16 = ViewTypeParameter.create! :name => 'master_detail', :description => 'Maestro - Detalle',      :value => '1.5',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+param_17 = ViewTypeParameter.create! :name => 'process',       :description => 'Proceso',                :value => '1.08', :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+param_18 = ViewTypeParameter.create! :name => 'process',       :description => 'Proceso',                :value => '1.2',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+param_19 = ViewTypeParameter.create! :name => 'process',       :description => 'Proceso',                :value => '1.5',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+param_20 = ViewTypeParameter.create! :name => 'graphics_interactive', :description => 'Interactiva grafica (activeX, applet)', :value => '1.3',  :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+param_21 = ViewTypeParameter.create! :name => 'graphics_interactive', :description => 'Interactiva grafica (activeX, applet)', :value => '1.5',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+param_22 = ViewTypeParameter.create! :name => 'graphics_interactive', :description => 'Interactiva grafica (activeX, applet)', :value => '1.8',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+param_23 = ViewTypeParameter.create! :name => 'basic_report', :description => 'Reporte basico' ,      :value => '1.03',  :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+param_24 = ViewTypeParameter.create! :name => 'basic_report', :description => 'Reporte basico' ,      :value => '1.1',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+param_25 = ViewTypeParameter.create! :name => 'basic_report', :description => 'Reporte basico' ,      :value => '1.3',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+param_26 = ViewTypeParameter.create! :name => 'graphic_report', :description => 'Reporte grafico',      :value => '1.3',  :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+param_27 = ViewTypeParameter.create! :name => 'graphic_report', :description => 'Reporte grafico',      :value => '1.5',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+param_28 = ViewTypeParameter.create! :name => 'graphic_report', :description => 'Reporte grafico',      :value => '1.8',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+param_29 = ViewTypeParameter.create! :name => 'mixed_report', :description => 'Reporte mixto' ,      :value => '1.4',  :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+param_30 = ViewTypeParameter.create! :name => 'mixed_report', :description => 'Reporte mixto' ,      :value => '1.6',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+param_31 = ViewTypeParameter.create! :name => 'mixed_report', :description => 'Reporte mixto' ,      :value => '2.0',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+param_32 = ViewTypeParameter.create! :name => 'na', :description => 'No Aplica',      :value => '1.0',  :level => 'na',       :label => 'No Aplica (1.0)',     :section => 'Tipo de Pantalla'
+
+# param_ = ViewTypeParameter.create! :name => '',        :description => '',      :value => '1.',  :level => 'low',       :label => 'Baja ()',     :section => 'Tipo de Pantalla'
+# param_ = ViewTypeParameter.create! :name => '',        :description => '',      :value => '1.',  :level => 'mid',       :label => 'Media ()',    :section => 'Tipo de Pantalla'
+# param_ = ViewTypeParameter.create! :name => '',        :description => '',      :value => '1.',  :level => 'high',      :label => 'Alta ()',     :section => 'Tipo de Pantalla'
+
+
+                             
+
+                               
+
+
+
+
+
+# param_07 = Parameter.new :value => '1.0'
+# param_07.param_section  = complexity
+# param_07.param_category = assoc_business_logic
+# param_07.param_level    = high 
+# param_07.save!
+# 
+# param_08 = Parameter.new :value => '0.5'
+# param_08.param_section  = complexity
+# param_08.param_category = assoc_business_logic
+# param_08.param_level    = mid
+# param_08.save!
+# 
+# param_09 = Parameter.new :value => '0.1'
+# param_09.param_section  = complexity
+# param_09.param_category = assoc_business_logic
+# param_09.param_level    = low
+# param_09.save!
+# 
+# # --------
+
 # puts 'Parameters'
 # puts '  Metrics'
 # param_01 = Parameter.new :value => '1.0'
@@ -271,9 +349,9 @@ met_weight_05 = MetricWeight.create! :name => 'ext_sys_interface_protocol', :des
 # master_detail         = ParamCategory.create! :name => 'master_detail', :description => 'Maestro - Detalle'
 # process               = ParamCategory.create! :name => 'process', :description => 'Proceso'
 # graphics_interactive  = ParamCategory.create! :name => 'graphics_interactive', :description => 'Interactiva grafica (activeX, applet)'
-# basic_report          = ParamCategory.create! :name => 'basic_report', :description => 'Reporte basico'
+# basic_report          = ParamCategory.create! :name => 'basic_report', :description => 'Reporte basico'                              
 # graphic_report        = ParamCategory.create! :name => 'graphic_report', :description => 'Reporte grafico'
-# mixed_report          = ParamCategory.create! :name => 'mixed_report', :description => 'Reporte mixto'
+# mixed_report          = ParamCategory.create! :name => 'mixed_report', :description => 'Reporte mixto'                                
 # 
 # puts 'Parameter Levels'
 # none        = ParamLevel.create! :name => 'none', :description => 'ninguno'
