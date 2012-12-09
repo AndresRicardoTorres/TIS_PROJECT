@@ -76,17 +76,7 @@ class EstimationsController < ApplicationController
     @bus_logic = BusinessLogicAssociatedParameter.all
     @code_gen_help  = CodeGenHelpParameter.all
     @developer_exp  = DevExpParameter.all
-    @view_type_master = ViewTypeParameter.where(name: "master")
-    
-    p "***"
-    p @estimation
-    
-    
-    @estimation.metric_parameters.each do |m|
-      p m
-    end
-    
-    
+    @view_type_master = ViewTypeParameter.where(name: "master")    
   end
 
   def create
