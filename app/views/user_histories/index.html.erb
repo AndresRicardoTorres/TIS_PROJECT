@@ -21,13 +21,14 @@
     <td><%= user_history.priotity %></td>
     <td><%= user_history.iteration %></td>
     <td><%= user_history.true_time %></td>
-    <td><%= link_to 'Show', user_history %></td>
-    <td><%= link_to 'Edit', edit_user_history_path(user_history) %></td>
-    <td><%= link_to 'Destroy', user_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', project_user_history_path(@project, user_history) %></td>
+    <td><%= link_to 'Edit', edit_project_user_history_path(@project, user_history) %></td>
+    <td><%= link_to 'Destroy',  project_user_history_path(@project, user_history), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User history', new_user_history_path %>
+<%= link_to 'New User history', new_project_user_history_path(@project) %>
+<%= link_to 'Back to Project', @project %>

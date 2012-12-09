@@ -3,7 +3,9 @@ class UserHistoriesController < ApplicationController
   # GET /user_histories
   # GET /user_histories.json
   def index
-    @user_histories = UserHistory.all
+    @project = Project.find(params[:project_id])
+    @user_histories = @project.user_histories
+    # @user_histories = UserHistory.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,23 +16,34 @@ class UserHistoriesController < ApplicationController
   # GET /user_histories/1
   # GET /user_histories/1.json
   def show
-    @user_history = UserHistory.find(params[:id])
+    # @project = Project.find(params[:project_id])
+    # @user_histories = @project.user_histories.find(params[:id])
+    # # @user_history = UserHistory.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user_history }
-    end
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render json: @user_history }
+    # end
+    
+    
+    @project = Project.find(params[:project_id])
+
+    # For URL like /orders/1/items/2
+    # Find an item in orders 1 that has id=2
+    @user_history = @project.user_histories.find(params[:id])
   end 
 
   # GET /user_histories/new
   # GET /user_histories/new.json
   def new
-    @user_history = UserHistory.new
+    @project = Project.find(params[:project_id])
+    @user_history = @project.user_histories.build
+    # @user_history = UserHistory.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user_history }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @user_history }
+    # end
   end 
 
   # GET /user_histories/1/edit
@@ -41,9 +54,14 @@ class UserHistoriesController < ApplicationController
   # POST /user_histories
   # POST /user_histories.json
   def create
-	@project = Project.find(params[:project_id])
-    @user_history = @project.user_histories.create!(params[:user_history])
-	redirect_to @project, :notice => "User History created!"
+    @project = Project.find(params[:project_id])
+    @user_history = @project.user_histories.build(params[:user_history])
+    if @user_history.save 
+      redirect_to project_user_history_url(@project, @user_history) #:notice => "User History created!")
+    else
+      render :action => 'new'
+    end
+    # redirect_to @project, :notice => "User History created!"
     
   end
 
