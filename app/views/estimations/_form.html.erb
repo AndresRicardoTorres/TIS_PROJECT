@@ -13,7 +13,7 @@
   <% end %>
   
   
-  <%= collection_select @estimation, :business_logic_associated_parameter_id, BusinessLogicAssociatedParameter.all, :id, :label%>
+  <%= f.collection_select :business_logic_associated_parameter_id, BusinessLogicAssociatedParameter.all, :id, :label%>
   
   
   <%=f.fields_for :metric_parameters do |builder| %>

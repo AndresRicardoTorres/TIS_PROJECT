@@ -7,6 +7,6 @@ class BusinessLogicAssociatedParameter
   field :level, type: String
   field :section, type: String
   
-  # has_many :estimations, :autosave => true
-  belongs_to :estimation
+  has_many :estimations, :autosave => true
+  # belongs_to :estimation
 end

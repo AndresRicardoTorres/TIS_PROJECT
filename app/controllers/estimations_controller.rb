@@ -68,6 +68,7 @@ class EstimationsController < ApplicationController
   end
   
   def edit
+    @estimation = Estimation.find(params[:id])
   end
 
   def create

@@ -11,6 +11,6 @@ class Estimation
   embeds_many :metric_parameters
   accepts_nested_attributes_for :metric_parameters
   
-  # belongs_to :business_logic_associated_parameter
-  has_one :business_logic_associated_parameter, :autosave => true
+  belongs_to :business_logic_associated_parameter
+  # has_one :business_logic_associated_parameter, :autosave => true
 end
