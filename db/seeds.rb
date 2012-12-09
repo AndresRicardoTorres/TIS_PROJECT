@@ -19,7 +19,7 @@
 
 puts 'SETTING UP PARAMETERS'
 
-
+MetricWeight.delete_all
 met_weight_01 = MetricWeight.create! :name => 'system_in',                  :description => 'Entradas al sistema',                       :weight => '1.0'
 met_weight_02 = MetricWeight.create! :name => 'system_out',                 :description => 'Salidas del sistema',                       :weight => '1.5'
 met_weight_03 = MetricWeight.create! :name => 'rm_entities',                :description => 'Entidades del modelo relacional',           :weight => '2.0'
@@ -28,20 +28,23 @@ met_weight_05 = MetricWeight.create! :name => 'ext_sys_interface_protocol', :des
 
 
 puts '  Complexity Adjustment'
-
+BusinessLogicAssociatedParameter.delete_all
 param_01 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '2.0',  :level => 'very_high', :label => 'Muy alta (2.0)', :section => 'Ajuste de complejidad'  
 param_02 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '1.0',  :level => 'high',      :label => 'Alta (1.0)',     :section => 'Ajuste de complejidad'  
 param_03 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '0.5',  :level => 'mid',       :label => 'Media (0.5)',    :section => 'Ajuste de complejidad'  
 param_04 = BusinessLogicAssociatedParameter.create! :name => 'assoc_business_logic', :description => 'Logica de negocio asociada',         :value => '0.1',  :level => 'low',       :label => 'Baja (0.1)',     :section => 'Ajuste de complejidad'
 
+CodeGenHelpParameter.delete_all
 param_05 = CodeGenHelpParameter.create! :name => 'code_gen_help', :description => 'Ayuda mediante generador de codigo', :value => '0.5',  :level => 'high',      :label => 'Alta (0.5)',     :section => 'Ajuste de complejidad'  
 param_06 = CodeGenHelpParameter.create! :name => 'code_gen_help', :description => 'Ayuda mediante generador de codigo', :value => '0.75', :level => 'mid',       :label => 'Media (0.75)',   :section => 'Ajuste de complejidad'  
 param_07 = CodeGenHelpParameter.create! :name => 'code_gen_help', :description => 'Ayuda mediante generador de codigo', :value => '0.95', :level => 'low',       :label => 'Baja (0.95)',    :section => 'Ajuste de complejidad'  
 
+DevExpParameter.delete_all
 param_08 = DevExpParameter.create! :name => 'developer_exp', :description => 'Experiencia del desarrollador',      :value => '0.5',  :level => 'high',      :label => 'Alta (0.5)',     :section => 'Ajuste de complejidad'  
 param_09 = DevExpParameter.create! :name => 'developer_exp', :description => 'Experiencia del desarrollador',      :value => '0.75', :level => 'mid',       :label => 'Media (0.75)',   :section => 'Ajuste de complejidad'  
 param_10 = DevExpParameter.create! :name => 'developer_exp', :description => 'Experiencia del desarrollador',      :value => '0.95', :level => 'low',       :label => 'Baja (0.95)',    :section => 'Ajuste de complejidad'
 
+ViewTypeParameter.delete_all
 param_11 = ViewTypeParameter.create! :name => 'master',        :description => 'Maestro',                :value => '1.08', :level => 'low',       :label => 'Baja (1.08)',    :section => 'Tipo de Pantalla'
 param_12 = ViewTypeParameter.create! :name => 'master',        :description => 'Maestro',                :value => '1.2',  :level => 'mid',       :label => 'Media (1.2)',    :section => 'Tipo de Pantalla'
 param_13 = ViewTypeParameter.create! :name => 'master',        :description => 'Maestro',                :value => '1.3',  :level => 'high',      :label => 'Alta (1.3)',     :section => 'Tipo de Pantalla'
