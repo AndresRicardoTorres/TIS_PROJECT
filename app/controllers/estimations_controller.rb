@@ -50,6 +50,9 @@ class EstimationsController < ApplicationController
     @view_type_na_opts  = ViewTypeParameter.where(name: "na").map { |par| [par.label, par.id] }
     
     @bus_logic = BusinessLogicAssociatedParameter.all
+    @code_gen_help  = CodeGenHelpParameter.all
+    @developer_exp  = DevExpParameter.all
+    @view_type_master = ViewTypeParameter.where(name: "master")
     
     respond_to do |format|
       format.html # new.html.erb
