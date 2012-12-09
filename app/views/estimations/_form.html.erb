@@ -12,13 +12,18 @@
     </div>
   <% end %>
   
-  
-  <%= f.collection_select :business_logic_associated_parameter_id, BusinessLogicAssociatedParameter.all, :id, :label%>
+  <%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label%>
+  <%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :label%>
+  <%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :label%>
+  <%= f.collection_select :view_type_parameter_id, @view_type_master, :id, :label%>
   
   
   <%=f.fields_for :metric_parameters do |builder| %>
   
-    <div data-role="collapsible" data-theme="b" data-content-theme="b">  
+    <div data-role="collapsible" data-theme="b" data-content-theme="b">
+        <%= builder.hidden_field :name %>
+        <%= builder.hidden_field :description %>
+        <%= builder.hidden_field :weight %>
         <h2><%= builder.object.description %> </h2>     
         <div class="ui-grid-b">
           <div class="ui-block-a">
