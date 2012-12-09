@@ -33,7 +33,7 @@ class EstimationsController < ApplicationController
     # 2.times {@estimation.metric_parameters.new}
     
     @metric_weights.each do |m|
-       @estimation.metric_parameters.new(name: m.name, description: m.description, weight: m.weight)
+       @estimation.metric_parameters.new(name: m.name, description: m.description, weight: m.weight, optimistic_value: 0,probable_value: 0,pessimistic_value: 0,value: 0,quantity: 0)
     end
     
     # @ops  = BusinessLogicAssociatedParameter.where(name: "assoc_business_logic").map { |par| [(par.level + " (" + par.value.to_s + ")"), par.id] }
@@ -72,6 +72,21 @@ class EstimationsController < ApplicationController
   
   def edit
     @estimation = Estimation.find(params[:id])
+    
+    @bus_logic = BusinessLogicAssociatedParameter.all
+    @code_gen_help  = CodeGenHelpParameter.all
+    @developer_exp  = DevExpParameter.all
+    @view_type_master = ViewTypeParameter.where(name: "master")
+    
+    p "***"
+    p @estimation
+    
+    
+    @estimation.metric_parameters.each do |m|
+      p m
+    end
+    
+    
   end
 
   def create
