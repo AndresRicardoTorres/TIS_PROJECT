@@ -1,0 +1,17 @@
+<h3> <%= @atrapado %> </h3>
+
+<%= form_tag('/estimations/gettest') do -%>
+  <%= select_tag(:assoc_business_logic, options_for_select(@ops))  %>
+  <%= submit_tag("Enviar") %>
+<% end -%>
+
+<% @pars.each do |par| %>
+<p> <%= par.name %> </p>
+<p> <%= par.description %> </p>
+<p> <%= par.value %> </p>
+<p> <%= par.level %> </p>
+<% end %>
+
+
+
+

@@ -1,11 +1,20 @@
 TISProject::Application.routes.draw do
 
+  get '/estimations/test'
+  post '/estimations/gettest'
+  
+  resources :estimations do
+    resources :metric_parameters
+  end
+  
+
   devise_for :users
   resources :users
   resources :modulos
-  resources :projects
-  resources :user_histories
-  
+  resources :projects do
+	resources :user_histories
+  end
+
   authenticated :user do
     root :to => 'home#index'
 

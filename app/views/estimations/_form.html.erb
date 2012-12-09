@@ -1,0 +1,90 @@
+<%= form_for @estimation do |f| %>
+
+  <% if @estimation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
+
+      <ul>
+      <% @estimation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+  <%= f.collection_select :business_logic_associated_parameter_id, BusinessLogicAssociatedParameter.all, :id, :label%>
+  
+  
+  <%=f.fields_for :metric_parameters do |builder| %>
+  
+    <div data-role="collapsible" data-theme="b" data-content-theme="b">  
+        <h2><%= builder.object.description %> </h2>     
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <%= builder.label :optimistic_value %><br />
+            <%= builder.text_field :optimistic_value, :value=>0 %>
+          </div>
+          <div class="ui-block-b">
+            <%= builder.label :probable_value %><br />
+            <%= builder.text_field :probable_value, :value=>0 %>
+          </div>
+          <div class="ui-block-c">
+            <%= builder.label :pessimistic_value %><br />
+            <%= builder.text_field :pessimistic_value, :value=>0 %>
+          </div>
+        </div><!-- /grid-b -->
+        
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <%= builder.label :value %><br />
+            <%= builder.text_field :value, :value=>0 %>
+          </div>
+          <div class="ui-block-b">
+            <%= builder.label :weight %><br />
+            <%= builder.text_field :weight, :disabled=>true %>
+          </div>
+          <div class="ui-block-c">
+            <%= builder.label :quantity %><br />
+            <%= builder.text_field :quantity, :value=>0 %>
+          </div>
+        </div><!-- /grid-b -->
+    </div>
+  <% end %>
+   
+  <div class="field">
+	<h3>Total Integración Funcional - Persistencia sin Ajustar </h3>
+    <%= f.text_field :total_metrics, :placeholder => "Total métricas"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_complexity %><br />
+    <%= f.text_field :total_complexity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :view_type_factor %><br />
+    <%= f.text_field :view_type_factor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :percentage_reuse %><br />
+    <%= f.text_field :percentage_reuse %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_web_points %><br />
+    <%= f.text_field :total_web_points %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :effort %><br />
+    <%= f.text_field :effort %>
+  </div>	
+	
+  
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
