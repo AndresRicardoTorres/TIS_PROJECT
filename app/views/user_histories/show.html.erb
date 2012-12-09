@@ -1,10 +1,24 @@
-<h1>Item in <%= @project.name %></h1>
+<% content_for :heading do %>
+User History Details
+<% end %>
 
-<p>
-  <b>Item name:</b>
-  <%= @user_history.name %>
-</p>
+<p id="notice"><%= notice %></p>
 
+<div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+		<p><b>Name: </b><%= @user_history.name %></p>
+		<p><b>Actors: </b><%= @user_history.actors %></p>
+		<p><b>Priotity: </b><%= @user_history.priotity %></p>
+		<p><b>Iteration: </b><%= @user_history.iteration %></p>
+		<p><b>Dependence: </b><%= @user_history.dependence %></p>
+		<p><b>Description: </b><%= @user_history.description %></p>
+		<p><b>Comments: </b><%= @user_history.comments %></p>
+		<p><b>Creation Date: </b><%= @user_history.creation_date %></p>
+		<p><b>Modification Date: </b><%= @user_history.modification_date %></p>
+		<p><b>True time: </b><%= @user_history.true_time %></p>
+	</fieldset>
+</div>
 
 <%= link_to 'Edit', edit_project_user_history_path(@project, @user_history) %> |
-<%= link_to 'Back', project_user_histories_path(@project) %>
+<%= link_to 'Destroy', project_user_history_path(@project, @user_history), :confirm => 'Are you sure?', :method => :delete  %> |
+<%= link_to 'Back', project_path(@project) %> 
