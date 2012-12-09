@@ -1,27 +1,19 @@
-<% content_for :heading do %>
-Project Details
+<p>
+  <b>Project name:</b>
+  <%= @project.name %>
+</p>
+
+<!-- Display user_histories of an project -->
+<h2>HU</h2>
+<% @project.user_histories.each do |item| %>
+  <p>
+    <b>HU name:</b>
+    <%= item.name %>
+  </p>
 <% end %>
 
-<p id="notice"><%= notice %></p>
-
-<div class="ui-body ui-body-b">
-	<fieldset class="ui-grid-a">
-		<p><b>Name:</b><%= @project.name %></p>
-		<p><b>Description:</b><%= @project.description %></p>
-		<% if @project.user_histories.size > 0 %>
-			<fieldset class="ui-grid-a">
-				<h2>User Histories</h2>
-				<% for user_history in @project.user_histories %>
-				<p>User History: <%=link_to user_history.name, user_history %></p>
-				<% end %>
-			</fieldset>
-		<% else %>
-			<%= link_to 'New User history', :controller => "user_histories", :action => "new", :project_id => @project %>
-		<% end %>
-	</fieldset>
-</div>
+<%= link_to 'Ver historias de usuario', project_user_histories_path(@project) %>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
 
