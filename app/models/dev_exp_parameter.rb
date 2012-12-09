@@ -6,4 +6,6 @@ class DevExpParameter
   field :value, type: Float
   field :level, type: String
   field :section, type: String
+  
+  has_many :estimations, :autosave => true
 end
