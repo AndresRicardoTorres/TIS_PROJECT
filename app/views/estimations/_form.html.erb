@@ -1,95 +1,127 @@
 <%= form_for @estimation do |f| %>
 
-  <% if @estimation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
+<% if @estimation.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
 
-      <ul>
-      <% @estimation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label%>
-  <%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :label%>
-  <%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :label%>
-  <%= f.collection_select :view_type_parameter_id, @view_type_master, :id, :label%>
-  
-  
-  <%=f.fields_for :metric_parameters do |builder| %>
-  
-    <div data-role="collapsible" data-theme="b" data-content-theme="b">
-        <%= builder.hidden_field :name %>
-        <%= builder.hidden_field :description %>
-        <%= builder.hidden_field :weight %>
-        <h2><%= builder.object.description %> </h2>     
-        <div class="ui-grid-b">
-          <div class="ui-block-a">
-            <%= builder.label :optimistic_value %><br />
-            <%= builder.text_field :optimistic_value%>
-          </div>
-          <div class="ui-block-b">
-            <%= builder.label :probable_value %><br />
-            <%= builder.text_field :probable_value %>
-          </div>
-          <div class="ui-block-c">
-            <%= builder.label :pessimistic_value %><br />
-            <%= builder.text_field :pessimistic_value %>
-          </div>
-        </div><!-- /grid-b -->
-        
-        <div class="ui-grid-b">
-          <div class="ui-block-a">
-            <%= builder.label :value %><br />
-            <%= builder.text_field :value %>
-          </div>
-          <div class="ui-block-b">
-            <%= builder.label :weight %><br />
-            <%= builder.text_field :weight, :disabled=>true %>
-          </div>
-          <div class="ui-block-c">
-            <%= builder.label :quantity %><br />
-            <%= builder.text_field :quantity %>
-          </div>
-        </div><!-- /grid-b -->
-    </div>
-  <% end %>
-   
-  <div class="field">
+	<ul>
+		<% @estimation.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label%>
+<%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :label%>
+<%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :label%>
+
+	<%  #f.grouped_collection_select(:view_type_parameter_id,@viewtypes,:name,:description,:id,:label)%>
+	
+		
+	<select id="estimation_view_type_parameter_id" name="estimation[view_type_parameter_id]">
+	
+	
+	<% @view_types.each do |name,view_type|
+	
+	%>
+		<optgroup label="<%= name %>">
+			<% view_type.each do |value| %>
+				<option value="<%= value.id%>" 
+					<% if value.id == @estimation.view_type_parameter_id %>
+						selected="selected"
+					<% end %>><%= value.label%></option>
+			<% end %>								
+		</optgroup>
+	<% end %>
+			
+	
+</select>
+
+
+<%=f.fields_for :metric_parameters do |builder| %>
+
+<div data-role="collapsible" data-theme="b" data-content-theme="b">
+	<%= builder.hidden_field :name %>
+	<%= builder.hidden_field :description %>
+	<%= builder.hidden_field :weight %>
+	<h2><%= builder.object.description %> </h2>
+	<div class="ui-grid-b">
+		<div class="ui-block-a">
+			<%= builder.label :optimistic_value %>
+			<br />
+			<%= builder.text_field :optimistic_value%>
+		</div>
+		<div class="ui-block-b">
+			<%= builder.label :probable_value %>
+			<br />
+			<%= builder.text_field :probable_value %>
+		</div>
+		<div class="ui-block-c">
+			<%= builder.label :pessimistic_value %>
+			<br />
+			<%= builder.text_field :pessimistic_value %>
+		</div>
+	</div><!-- /grid-b -->
+
+	<div class="ui-grid-b">
+		<div class="ui-block-a">
+			<%= builder.label :value %>
+			<br />
+			<%= builder.text_field :value %>
+		</div>
+		<div class="ui-block-b">
+			<%= builder.label :weight %>
+			<br />
+			<%= builder.text_field :weight, :disabled=>true %>
+		</div>
+		<div class="ui-block-c">
+			<%= builder.label :quantity %>
+			<br />
+			<%= builder.text_field :quantity %>
+		</div>
+	</div><!-- /grid-b -->
+</div>
+<% end %>
+
+<div class="field">
 	<h3>Total Integración Funcional - Persistencia sin Ajustar </h3>
-    <%= f.text_field :total_metrics, :placeholder => "Total métricas"%>
-  </div>
+	<%= f.text_field :total_metrics, :placeholder => "Total métricas"%>
+</div>
 
-  <div class="field">
-    <%= f.label :total_complexity %><br />
-    <%= f.text_field :total_complexity %>
-  </div>
+<div class="field">
+	<%= f.label :total_complexity %>
+	<br />
+	<%= f.text_field :total_complexity %>
+</div>
 
-  <div class="field">
-    <%= f.label :view_type_factor %><br />
-    <%= f.text_field :view_type_factor %>
-  </div>
+<div class="field">
+	<%= f.label :view_type_factor %>
+	<br />
+	<%= f.text_field :view_type_factor %>
+</div>
 
-  <div class="field">
-    <%= f.label :percentage_reuse %><br />
-    <%= f.text_field :percentage_reuse %>
-  </div>
+<div class="field">
+	<%= f.label :percentage_reuse %>
+	<br />
+	<%= f.text_field :percentage_reuse %>
+</div>
 
-  <div class="field">
-    <%= f.label :total_web_points %><br />
-    <%= f.text_field :total_web_points %>
-  </div>
-	
-  <div class="field">
-    <%= f.label :effort %><br />
-    <%= f.text_field :effort %>
-  </div>	
-	
-  
-	
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+	<%= f.label :total_web_points %>
+	<br />
+	<%= f.text_field :total_web_points %>
+</div>
+
+<div class="field">
+	<%= f.label :effort %>
+	<br />
+	<%= f.text_field :effort %>
+</div>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>
