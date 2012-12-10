@@ -16,11 +16,15 @@
   <% end %>
 
   <div class="ui-body ui-body-b">
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :author %><%= f.text_field :author %></div></div>	
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :identifier %><%= f.text_field :identifier %></div></div>	
+	</fieldset>
     <fieldset class="ui-grid-a">
-      <div class="ui-block-a"><div data-mini="true"><%= f.label :name %><%= f.text_field :name %></div></div>
-      <div class="ui-block-c"><div data-mini="true"><%= f.label :actors %><%= f.text_field :actors %></div></div>
-      <div class="ui-block-a"><div data-mini="true"><%= f.label :priotity %><%= f.number_field :priotity %></div></div>
-      <div class="ui-block-c"><div data-mini="true"><%= f.label :iteration %><%= f.text_field :iteration %></div></div>			
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :name %><%= f.text_field :name %></div></div>
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :actors %><%= f.text_field :actors %></div></div>
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :priority %><%= f.select(:priority, options_for_select([['Alta', 'alta'],['Media', 'media'],['Baja', 'baja']])) %></div></div>
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :iteration %><%= f.text_field :iteration %></div></div>		  
     </fieldset>
     <fieldset class="ui-grid-solo">
       <div class="ui-block-a"><div data-mini="true"><%= f.label :dependence %></div></div>

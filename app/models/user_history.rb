@@ -1,11 +1,12 @@
 class UserHistory
   include Mongoid::Document
-  field :cod, type: String
+  field :identifier, type: String
+  field :author, type: String
   field :name, type: String
   field :actors, type: String
   field :dependence, type: String
-  field :priotity, type: Integer
-  field :iteration, type: String
+  field :priority, type: String
+  field :iteration, type: Integer
   field :description, type: String
   field :comments, type: String
   field :true_time, type: Float
