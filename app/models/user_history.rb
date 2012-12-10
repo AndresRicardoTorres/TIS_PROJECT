@@ -14,4 +14,5 @@ class UserHistory
   field :modification_date, type: Date
   
   belongs_to :project
+  has_one :estimation
 end

@@ -15,7 +15,7 @@ class Estimation
   belongs_to :code_gen_help_parameter
   belongs_to :dev_exp_parameter
   belongs_to :view_type_parameter
-  
+  belongs_to :user_history
   
   # has_one :business_logic_associated_parameter, :autosave => true
 end
