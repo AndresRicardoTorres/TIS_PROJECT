@@ -14,18 +14,21 @@
 </div>
 <% end %>
 <div data-role="content">
-	<ul data-role="listview" data-split-theme="b">
+	<ul id="selects_parametros" data-role="listview" data-split-theme="b">
 		<li>
 			<h3>Lógica de negocio asociada : </h3>
-			<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label%>
+			<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label %>
+			<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :value , {},{:class=>'invisible',:id => 'valores_business'}%>
 		</li>
 		<li>
 			<h3>Ayuda mediante generador de código : </h3>
 			<%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :label%>
+			<%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :value ,{} ,{:class=>'invisible' , :id => 'valores_code'}%>
 		</li>
 		<li>
 			<h3>Experiencia del desarollador : </h3>
 			<%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :label%>
+			<%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :value , {},{:class=>'invisible', :id => 'valores_exp'}%>
 		</li>
 		<li>
 			<h3>Tipo de vista : </h3>
@@ -63,17 +66,17 @@
 		<div class="ui-block-a">
 			<%= builder.label :optimistic_value %>
 			
-			<%= builder.text_field :optimistic_value%>
+			<%= builder.text_field :optimistic_value  , :class =>"metric_optimistic_value"%>
 		</div>
 		<div class="ui-block-b">
 			<%= builder.label :probable_value %>
 			
-			<%= builder.text_field :probable_value %>
+			<%= builder.text_field :probable_value , :class =>"metric_probable_value"%>
 		</div>
 		<div class="ui-block-c">
 			<%= builder.label :pessimistic_value %>
 			
-			<%= builder.text_field :pessimistic_value %>
+			<%= builder.text_field :pessimistic_value , :class =>"metric_pessimistic_value"%>
 		</div>
 	</div><!-- /grid-b -->
 
@@ -81,17 +84,17 @@
 		<div class="ui-block-a">
 			<%= builder.label :value %>
 			
-			<%= builder.text_field :value %>
+			<%= builder.text_field :value , :disabled=>true , :class =>"metric_value"%>
 		</div>
 		<div class="ui-block-b">
 			<%= builder.label :weight %>
 			
-			<%= builder.text_field :weight, :disabled=>true %>
+			<%= builder.text_field :weight, :disabled=>true ,:class =>"metric_weight"%>
 		</div>
 		<div class="ui-block-c">
 			<%= builder.label :quantity %>
 			
-			<%= builder.text_field :quantity %>
+			<%= builder.text_field :quantity , :disabled=>true,:class =>"metric_quantity"%>
 		</div>
 	</div><!-- /grid-b -->
 </div>
@@ -100,12 +103,12 @@
 
 <div class="field" data-role="fieldcontain">
 	<label><h3>Total Integración Funcional - Persistencia sin Ajustar </h3></label>
-	<%= f.text_field :total_metrics, :placeholder => "Total métricas"%>
+	<%= f.text_field :total_metrics, :placeholder => "Total métricas" ,  :disabled=>true%>
 </div>
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :total_complexity %>	
-	<%= f.text_field :total_complexity %>
+	<%= f.text_field :total_complexity,:disabled=>true %>
 </div>
 
 <div class="field" data-role="fieldcontain">
@@ -115,31 +118,110 @@
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :percentage_reuse %>	
-	<%= f.text_field :percentage_reuse %>
+	<%= f.text_field :percentage_reuse , :type=>'range',:min=>"0" , :max=>"100" %>
 </div>
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :total_web_points %>	
-	<%= f.text_field :total_web_points %>
+	<%= f.text_field :total_web_points ,:disabled=>true%>
 </div>
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :effort %>	
-	<%= f.text_field :effort %>
+	<%= f.text_field :effort ,:disabled=>true%>
 </div>
 
 <div class="actions">
 	<%= f.submit %>
 </div>
 <% end %>
+
 <script>
 $(function(){
 	
+//Se esconden los combos que tienen los valores y los mongoid	
+$('.invisible').hide();
+$('#selects_parametros .ui-select:odd').hide();
+
+//Se calcula el esfuerzo
+$('#estimation_total_web_points').change(function(){
+	var WEB = parseFloat($(this).val());
+	var E = 14.95 * Math.pow(WEB,0.66);
+	$('#estimation_effort').val(E); 
+});
+
+///Se calculan los puntos web totales
+$('#estimation_total_complexity:visible,select[id="estimation_view_type_parameter_id"]:visible,#estimation_percentage_reuse').change(function(){
+	var TIFP = parseFloat($('#estimation_total_complexity:visible').val());
+	var FTP = parseFloat($('select[id="estimation_view_type_parameter_id"]:visible').val());
+	var REUT = parseFloat($('#estimation_percentage_reuse').val());
+	REUT=isNaN(REUT)?0:REUT;
+	var WEB = (TIFP * FTP) * ((100-REUT)/100);
+	$('#estimation_total_web_points').val(WEB).change();	
+});
+
 ///Configura el factor de tipo de vista	
 $('select[id="estimation_view_type_parameter_id"]:visible').change(function(){
 	var valor = $(this).find('option:selected').attr('valor');
 	$('input[id="estimation_view_type_factor"]:visible').val(valor);
 }).change();
+
+
+//Se calcula TIFP
+$('select[id="estimation_business_logic_associated_parameter_id"]:visible,select[id="estimation_code_gen_help_parameter_id"]:visible,select[id="estimation_dev_exp_parameter_id"]:visible,#estimation_total_metrics:visible').change(function(){
+	var business_id = $('select[id="estimation_business_logic_associated_parameter_id"]:visible option:selected').val();
+	var code_id = $('select[id="estimation_code_gen_help_parameter_id"]:visible option:selected').val();
+	var experience_id = $('select[id="estimation_dev_exp_parameter_id"]:visible option:selected').val();
+	
+	
+	var business = parseFloat($('#valores_business option[value="'+business_id+'"]').html());
+	var code = parseFloat($('#valores_code option[value="'+code_id+'"]').html());
+	var experience = parseFloat($('#valores_exp option[value="'+experience_id+'"]').html());
+	
+	var TIFPS = parseFloat($('#estimation_total_metrics:visible').val());
+	
+	var TIFP = TIFPS * experience * code * business;
+	
+	$('#estimation_total_complexity:visible').val(isNaN(TIFP)?0:TIFP).change();	
+});
+
+//Se calcula el TIFPS
+$('.metric_quantity').change(function(){
+	var TIFPS = 0;
+	$('.metric_quantity').each(function(k,v){
+		TIFPS+=parseFloat($(v).val());
+	});
+	$('#estimation_total_metrics:visible').val(TIFPS).change();
+});
+
+
+//Se calcula la cantidad de las metricas
+$('.metric_value').change(function(){
+		
+	var divMetrica = $(this).parent().parent().parent();
+	
+	var valor = parseFloat($(this).val());	
+	
+	var weight = parseFloat(divMetrica.find('.metric_weight').val());
+	
+	var quantity = valor  * weight;
+	divMetrica.find('.metric_quantity').val(quantity).change();
+});
+
+///Se calcula el valor de las metricas
+$('.metric_optimistic_value,.metric_probable_value,.metric_pessimistic_value').change(function(){
+	var divMetrica = $(this).parent().parent().parent();
+	var optimistic = parseFloat(divMetrica.find('.metric_optimistic_value').val());
+	optimistic = isNaN(optimistic)?0:optimistic;
+	var probable = parseFloat(divMetrica.find('.metric_probable_value').val());
+	probable = isNaN(probable)?0:probable;
+	var pessimistic = parseFloat(divMetrica.find('.metric_pessimistic_value').val());
+	pessimistic = isNaN(pessimistic)?0:pessimistic;
+	var valor = optimistic+(4*probable)+pessimistic;
+	
+	divMetrica.find('.metric_value').val(valor).change();	
+}).change();
+
 
 
 });
