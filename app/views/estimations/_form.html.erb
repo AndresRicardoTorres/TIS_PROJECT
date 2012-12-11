@@ -39,7 +39,7 @@
 				%>
 				<optgroup label="<%= name %>">
 					<% view_type.each do |value| %>
-					<option value="<%= value.id%>"
+					<option value="<%= value.id%>" valor="<%= value.value %>"
 					<% if value.id == @estimation.view_type_parameter_id %>
 					selected="selected"
 					<% end %>><%= value.label%></option>
@@ -110,7 +110,7 @@
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :view_type_factor %>	
-	<%= f.text_field :view_type_factor %>
+	<%= f.text_field :view_type_factor , :disabled=>true%>
 </div>
 
 <div class="field" data-role="fieldcontain">
@@ -132,3 +132,15 @@
 	<%= f.submit %>
 </div>
 <% end %>
+<script>
+$(function(){
+	
+///Configura el factor de tipo de vista	
+$('select[id="estimation_view_type_parameter_id"]:visible').change(function(){
+	var valor = $(this).find('option:selected').attr('valor');
+	$('input[id="estimation_view_type_factor"]:visible').val(valor);
+}).change();
+
+
+});
+</script>
