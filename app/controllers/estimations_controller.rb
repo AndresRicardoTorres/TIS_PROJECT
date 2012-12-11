@@ -121,6 +121,12 @@ class EstimationsController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:project_id])
+    @user_history = UserHistory.find(params[:user_history_id])
+   
+    #Como una historia de usuario tiene solo una estimacion, entonces es la de la historia cargada
+    @estimation = @user_history.estimation    
+    @estimation.update_attributes(params[:estimation])
   end
 
   def destroy

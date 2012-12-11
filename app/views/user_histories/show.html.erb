@@ -18,7 +18,7 @@ User History Details
 		<p><b>Creation Date: </b><%= @user_history.creation_date %></p>
 		<p><b>Modification Date: </b><%= @user_history.modification_date %></p>
 		<% if @user_history.estimation? %>
-			<p><b>True time: </b><%= @user_history.true_time %></p>
+			<p><b>True time: </b><%= @user_history.estimation.effort %></p>
 			<%= link_to 'Edit Estimation', edit_project_user_history_estimation_path(@project, @user_history, @user_history.estimation) %> 
 		<% else %>
 			<%= link_to 'New Estimation', new_project_user_history_estimation_path(@project, @user_history) %> 
