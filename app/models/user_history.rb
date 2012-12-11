@@ -10,6 +10,7 @@ class UserHistory
   field :description, type: String
   field :comments, type: String
   field :true_time, type: Float
+  field :estimation_time, type: Float
   field :creation_date, type: Date
   field :modification_date, type: Date
   

@@ -107,7 +107,7 @@ class EstimationsController < ApplicationController
     #@estimation = Estimation.new(params[:estimation])
 
     if @estimation.save
-      redirect_to project_user_history_estimation_url(@project, @user_history, @estimation)
+      redirect_to project_user_history_url(@project, @user_history)
     #format.html { redirect_to(@estimation, notice: 'Project was successfully created.') }
     #format.json { render json: @estimation, status: :created, location: @project }
     else

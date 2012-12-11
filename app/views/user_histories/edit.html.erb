@@ -27,6 +27,10 @@ Edit User History
 		<div class="ui-block-a"><div data-mini="true"><%= f.label :priority %><%= f.select(:priority, options_for_select([['Alta', 'alta'],['Media', 'media'],['Baja', 'baja']])) %></div></div>
 		<div class="ui-block-c"><div data-mini="true"><%= f.label :iteration %><%= f.text_field :iteration %></div></div>		  
     </fieldset>
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><div data-mini="true"><%= f.label :estimation_time %><%= f.text_field :estimation_time, :disabled=>true %></div></div>
+		<div class="ui-block-c"><div data-mini="true"><%= f.label :true_time %><%= f.text_field :true_time %></div></div>		  
+    </fieldset>
     <fieldset class="ui-grid-solo">
       <div class="ui-block-a"><div data-mini="true"><%= f.label :dependence %></div></div>
       <div class="ui-block-a"><div data-mini="true"><%= f.text_field :dependence %></div></div>
