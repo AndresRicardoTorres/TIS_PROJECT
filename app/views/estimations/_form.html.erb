@@ -14,21 +14,26 @@
 </div>
 <% end %>
 <div data-role="content">
-	<ul id="selects_parametros" data-role="listview" data-split-theme="b">
+	<div id="selects_parametros" class='invisible'>
+		<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :value , {},{:class=>'invisible',:id => 'valores_business'}%>
+		<%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :value ,{} ,{:class=>'invisible' , :id => 'valores_code'}%>
+		<%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :value , {},{:class=>'invisible', :id => 'valores_exp'}%>
+		</div>
+	<ul  data-role="listview" data-split-theme="b">
 		<li>
 			<h3>Lógica de negocio asociada : </h3>
 			<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label %>
-			<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :value , {},{:class=>'invisible',:id => 'valores_business'}%>
+			
 		</li>
 		<li>
 			<h3>Ayuda mediante generador de código : </h3>
 			<%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :label%>
-			<%= f.collection_select :code_gen_help_parameter_id, @code_gen_help, :id, :value ,{} ,{:class=>'invisible' , :id => 'valores_code'}%>
+			
 		</li>
 		<li>
 			<h3>Experiencia del desarollador : </h3>
 			<%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :label%>
-			<%= f.collection_select :dev_exp_parameter_id, @developer_exp, :id, :value , {},{:class=>'invisible', :id => 'valores_exp'}%>
+			
 		</li>
 		<li>
 			<h3>Tipo de vista : </h3>
@@ -141,7 +146,7 @@ $(function(){
 	
 //Se esconden los combos que tienen los valores y los mongoid	
 $('.invisible').hide();
-$('#selects_parametros .ui-select:odd').hide();
+
 
 //Se calcula el esfuerzo
 $('#estimation_total_web_points').change(function(){
