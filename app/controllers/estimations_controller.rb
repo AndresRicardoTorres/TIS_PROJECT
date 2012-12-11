@@ -78,7 +78,9 @@ class EstimationsController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
     @user_history = UserHistory.find(params[:user_history_id])
-    @estimation = @user_history.estimation.find(params[:id])
+   
+    #Como una historia de usuario tiene solo una estimacion, entonces es la de la historia cargada
+    @estimation = @user_history.estimation
     #@estimation = Estimation.find(params[:id])
 
     @bus_logic = BusinessLogicAssociatedParameter.all
