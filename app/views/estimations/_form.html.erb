@@ -142,11 +142,11 @@
 <% end %>
 
 <script>
-$(function(){
+
+$(document).on('pageinit',function(){
 	
 //Se esconden los combos que tienen los valores y los mongoid	
 $('.invisible').hide();
-
 
 //Se calcula el esfuerzo
 $('#estimation_total_web_points').change(function(){
@@ -156,9 +156,9 @@ $('#estimation_total_web_points').change(function(){
 });
 
 ///Se calculan los puntos web totales
-$('#estimation_total_complexity:visible,select[id="estimation_view_type_parameter_id"]:visible,#estimation_percentage_reuse').change(function(){
-	var TIFP = parseFloat($('#estimation_total_complexity:visible').val());
-	var FTP = parseFloat($('select[id="estimation_view_type_parameter_id"]:visible').val());
+$('#estimation_total_complexity,select[id="estimation_view_type_parameter_id"],#estimation_percentage_reuse').change(function(){
+	var TIFP = parseFloat($('#estimation_total_complexity').val());
+	var FTP = parseFloat($('select[id="estimation_view_type_parameter_id"]').val());
 	var REUT = parseFloat($('#estimation_percentage_reuse').val());
 	REUT=isNaN(REUT)?0:REUT;
 	var WEB = (TIFP * FTP) * ((100-REUT)/100);
@@ -166,43 +166,45 @@ $('#estimation_total_complexity:visible,select[id="estimation_view_type_paramete
 });
 
 ///Configura el factor de tipo de vista	
-$('select[id="estimation_view_type_parameter_id"]:visible').change(function(){
+$('select[id="estimation_view_type_parameter_id"]').change(function(){
 	var valor = $(this).find('option:selected').attr('valor');
-	$('input[id="estimation_view_type_factor"]:visible').val(valor);
+	$('input[id="estimation_view_type_factor"]').val(valor);
 }).change();
 
 
 //Se calcula TIFP
-$('select[id="estimation_business_logic_associated_parameter_id"]:visible,select[id="estimation_code_gen_help_parameter_id"]:visible,select[id="estimation_dev_exp_parameter_id"]:visible,#estimation_total_metrics:visible').change(function(){
-	var business_id = $('select[id="estimation_business_logic_associated_parameter_id"]:visible option:selected').val();
-	var code_id = $('select[id="estimation_code_gen_help_parameter_id"]:visible option:selected').val();
-	var experience_id = $('select[id="estimation_dev_exp_parameter_id"]:visible option:selected').val();
+$('select[id="estimation_business_logic_associated_parameter_id"],select[id="estimation_code_gen_help_parameter_id"],select[id="estimation_dev_exp_parameter_id"],#estimation_total_metrics').change(function(){
+	var business_id = $('select[id="estimation_business_logic_associated_parameter_id"] option:selected').val();
+	var code_id = $('select[id="estimation_code_gen_help_parameter_id"] option:selected').val();
+	var experience_id = $('select[id="estimation_dev_exp_parameter_id"] option:selected').val();
 	
 	
 	var business = parseFloat($('#valores_business option[value="'+business_id+'"]').html());
 	var code = parseFloat($('#valores_code option[value="'+code_id+'"]').html());
 	var experience = parseFloat($('#valores_exp option[value="'+experience_id+'"]').html());
 	
-	var TIFPS = parseFloat($('#estimation_total_metrics:visible').val());
+	var TIFPS = parseFloat($('#estimation_total_metrics').val());
 	
 	var TIFP = TIFPS * experience * code * business;
 	
-	$('#estimation_total_complexity:visible').val(isNaN(TIFP)?0:TIFP).change();	
+	$('#estimation_total_complexity').val(isNaN(TIFP)?0:TIFP).change();	
 });
 
 //Se calcula el TIFPS
 $('.metric_quantity').change(function(){
+	
 	var TIFPS = 0;
 	$('.metric_quantity').each(function(k,v){
 		TIFPS+=parseFloat($(v).val());
 	});
-	$('#estimation_total_metrics:visible').val(TIFPS).change();
+	
+	$('#estimation_total_metrics').val(TIFPS).change();
 });
 
 
 //Se calcula la cantidad de las metricas
 $('.metric_value').change(function(){
-		
+	
 	var divMetrica = $(this).parent().parent().parent();
 	
 	var valor = parseFloat($(this).val());	
@@ -215,6 +217,7 @@ $('.metric_value').change(function(){
 
 ///Se calcula el valor de las metricas
 $('.metric_optimistic_value,.metric_probable_value,.metric_pessimistic_value').change(function(){
+	
 	var divMetrica = $(this).parent().parent().parent();
 	var optimistic = parseFloat(divMetrica.find('.metric_optimistic_value').val());
 	optimistic = isNaN(optimistic)?0:optimistic;

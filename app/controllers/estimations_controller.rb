@@ -126,7 +126,12 @@ class EstimationsController < ApplicationController
    
     #Como una historia de usuario tiene solo una estimacion, entonces es la de la historia cargada
     @estimation = @user_history.estimation    
-    @estimation.update_attributes(params[:estimation])
+    if @estimation.update_attributes(params[:estimation])
+      redirect_to project_user_history_url(@project, @user_history), notice: 'Estimation was successfully updated.'
+    else
+      redirect_to project_user_history_url(@project, @user_history), notice: 'Estimation update error.'
+    end
+    
   end
 
   def destroy
