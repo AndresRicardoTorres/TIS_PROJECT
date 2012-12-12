@@ -145,43 +145,50 @@
 </div>
 
 <div class="actions">
-	<%= f.submit %>
+	<%= f.submit :onclick =>'borrar_eventos();'  %>
 </div>
 <% end %>
 
 <script>
+$(document).on('pageshow',function(event, ui){
 
-$(document).on('pageinit',function(){
+///Elimino eventos de todos los inputs y combos anteriores	
+$('select,input').unbind('change');
 	
 //Se esconden los combos que tienen los valores y los mongoid	
 $('.invisible').hide();
 
+
 //Se calcula el esfuerzo
-$('#estimation_total_web_points').change(function(){
+if(typeof contador == 'undefined')contador = 0; 
+
+$('.ui-page-active #estimation_total_web_points').change(function(){
+	console.log(++contador,'contador');
 	var WEB = parseFloat($(this).val());
 	var E = 14.95 * Math.pow(WEB,0.66);
-	$('#estimation_effort').val(E); 
+	$('.ui-page-active #estimation_effort').val(E); 
 });
 
 ///Se calculan los puntos web totales
-$('#estimation_total_complexity,select[id="estimation_view_type_parameter_id"],#estimation_percentage_reuse').change(function(){
+$('.ui-page-active #estimation_total_complexity,.ui-page-active select[id="estimation_view_type_parameter_id"],.ui-page-active #estimation_percentage_reuse').change(function(){
 	var TIFP = parseFloat($('#estimation_total_complexity').val());
 	var FTP = parseFloat($('select[id="estimation_view_type_parameter_id"]').val());
 	var REUT = parseFloat($('#estimation_percentage_reuse').val());
 	REUT=isNaN(REUT)?0:REUT;
 	var WEB = (TIFP * FTP) * ((100-REUT)/100);
-	$('#estimation_total_web_points').val(WEB).change();	
+	$('.ui-page-active #estimation_total_web_points').val(WEB).change();	
 });
 
 ///Configura el factor de tipo de vista	
-$('select[id="estimation_view_type_parameter_id"]').change(function(){
+$('.ui-page-active select[id="estimation_view_type_parameter_id"]').change(function(){
 	var valor = $(this).find('option:selected').attr('valor');
-	$('input[id="estimation_view_type_factor"]').val(valor);
+	$('.ui-page-active input[id="estimation_view_type_factor"]').val(valor);
 }).change();
 
 
 //Se calcula TIFP
-$('select[id="estimation_business_logic_associated_parameter_id"],select[id="estimation_code_gen_help_parameter_id"],select[id="estimation_dev_exp_parameter_id"],#estimation_total_metrics').change(function(){
+$('.ui-page-active select[id="estimation_business_logic_associated_parameter_id"],.ui-page-active select[id="estimation_code_gen_help_parameter_id"],.ui-page-active select[id="estimation_dev_exp_parameter_id"],#estimation_total_metrics').change(function(){
+	console.log(contador,'TIFP');
 	var business_id = $('select[id="estimation_business_logic_associated_parameter_id"] option:selected').val();
 	var code_id = $('select[id="estimation_code_gen_help_parameter_id"] option:selected').val();
 	var experience_id = $('select[id="estimation_dev_exp_parameter_id"] option:selected').val();
@@ -195,24 +202,24 @@ $('select[id="estimation_business_logic_associated_parameter_id"],select[id="est
 	
 	var TIFP = TIFPS * experience * code * business;
 	
-	$('#estimation_total_complexity').val(isNaN(TIFP)?0:TIFP).change();	
+	$('.ui-page-active #estimation_total_complexity').val(isNaN(TIFP)?0:TIFP).change();	
 });
 
 //Se calcula el TIFPS
-$('.metric_quantity').change(function(){
-	
+$('.ui-page-active .metric_quantity').change(function(){
+	console.log(contador,'TIFPS');
 	var TIFPS = 0;
 	$('.metric_quantity').each(function(k,v){
 		TIFPS+=parseFloat($(v).val());
 	});
 	
-	$('#estimation_total_metrics').val(TIFPS).change();
+	$('.ui-page-active #estimation_total_metrics').val(TIFPS).change();
 });
 
 
 //Se calcula la cantidad de las metricas
-$('.metric_value').change(function(){
-	
+$('.ui-page-active .metric_value').change(function(){
+	console.log(contador,'cantidad metricas');
 	var divMetrica = $(this).parent().parent().parent();
 	
 	var valor = parseFloat($(this).val());	
@@ -224,8 +231,8 @@ $('.metric_value').change(function(){
 });
 
 ///Se calcula el valor de las metricas
-$('.metric_optimistic_value,.metric_probable_value,.metric_pessimistic_value').change(function(){
-	
+$('.ui-page-active .metric_optimistic_value,.metric_probable_value,.metric_pessimistic_value').change(function(){
+	console.log(contador,'metricas');
 	var divMetrica = $(this).parent().parent().parent();
 	var optimistic = parseFloat(divMetrica.find('.metric_optimistic_value').val());
 	optimistic = isNaN(optimistic)?0:optimistic;
@@ -237,7 +244,6 @@ $('.metric_optimistic_value,.metric_probable_value,.metric_pessimistic_value').c
 	
 	divMetrica.find('.metric_value').val(valor).change();	
 }).change();
-
 
 
 });
