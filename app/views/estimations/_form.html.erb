@@ -160,10 +160,10 @@ $('.invisible').hide();
 
 
 //Se calcula el esfuerzo
-if(typeof contador == 'undefined')contador = 0; 
+
 
 $('.ui-page-active #estimation_total_web_points').change(function(){
-	console.log(++contador,'contador');
+	
 	var WEB = parseFloat($(this).val());
 	var E = 14.95 * Math.pow(WEB,0.66);
 	$('.ui-page-active #estimation_effort').val(E); 
@@ -188,7 +188,7 @@ $('.ui-page-active select[id="estimation_view_type_parameter_id"]').change(funct
 
 //Se calcula TIFP
 $('.ui-page-active select[id="estimation_business_logic_associated_parameter_id"],.ui-page-active select[id="estimation_code_gen_help_parameter_id"],.ui-page-active select[id="estimation_dev_exp_parameter_id"],#estimation_total_metrics').change(function(){
-	console.log(contador,'TIFP');
+	
 	var business_id = $('select[id="estimation_business_logic_associated_parameter_id"] option:selected').val();
 	var code_id = $('select[id="estimation_code_gen_help_parameter_id"] option:selected').val();
 	var experience_id = $('select[id="estimation_dev_exp_parameter_id"] option:selected').val();
@@ -207,7 +207,7 @@ $('.ui-page-active select[id="estimation_business_logic_associated_parameter_id"
 
 //Se calcula el TIFPS
 $('.ui-page-active .metric_quantity').change(function(){
-	console.log(contador,'TIFPS');
+	
 	var TIFPS = 0;
 	$('.metric_quantity').each(function(k,v){
 		TIFPS+=parseFloat($(v).val());
@@ -219,7 +219,7 @@ $('.ui-page-active .metric_quantity').change(function(){
 
 //Se calcula la cantidad de las metricas
 $('.ui-page-active .metric_value').change(function(){
-	console.log(contador,'cantidad metricas');
+	
 	var divMetrica = $(this).parent().parent().parent();
 	
 	var valor = parseFloat($(this).val());	
@@ -232,7 +232,7 @@ $('.ui-page-active .metric_value').change(function(){
 
 ///Se calcula el valor de las metricas
 $('.ui-page-active .metric_optimistic_value,.metric_probable_value,.metric_pessimistic_value').change(function(){
-	console.log(contador,'metricas');
+	
 	var divMetrica = $(this).parent().parent().parent();
 	var optimistic = parseFloat(divMetrica.find('.metric_optimistic_value').val());
 	optimistic = isNaN(optimistic)?0:optimistic;
