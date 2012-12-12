@@ -150,10 +150,13 @@
 <% end %>
 
 <script>
+if (typeof cargado == 'undefined')cargado=false;
+if(!cargado){
 $(document).on('pageshow',function(event, ui){
-
-///Elimino eventos de todos los inputs y combos anteriores	
-$('select,input').unbind('change');
+cargado=true;
+///Elimino div de formularios invisibles
+//console.log($('body > div.ui-page').not(':visible'));
+$('body > div.ui-page').not(':visible').remove();
 	
 //Se esconden los combos que tienen los valores y los mongoid	
 $('.invisible').hide();
@@ -247,5 +250,5 @@ $('.ui-page-active .metric_optimistic_value,.metric_probable_value,.metric_pessi
 
 
 
-});
+});}
 </script>
