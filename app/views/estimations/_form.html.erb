@@ -126,7 +126,7 @@
 
 <div class="field" data-role="fieldcontain">
 	<label><h3>Screen Complexity Factor </h3></label>		
-	<%= f.text_field :view_type_factor , :disabled=>true%>
+	<%= f.text_field :view_type_factor , :readonly=>true , :class=>'ui-disabled mobile-textinput-disabled ui-state-disabled'%>
 </div>
 
 <div class="field" data-role="fieldcontain">
@@ -136,12 +136,12 @@
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :total_web_points %>	
-	<%= f.text_field :total_web_points ,:disabled=>true%>
+	<%= f.text_field :total_web_points ,:readonly=>true , :class=>'ui-disabled mobile-textinput-disabled ui-state-disabled'%>
 </div>
 
 <div class="field" data-role="fieldcontain">
 	<%= f.label :effort %>	
-	<%= f.text_field :effort ,:disabled=>true%>
+	<%= f.text_field :effort ,:readonly=>true , :class=>'ui-disabled mobile-textinput-disabled ui-state-disabled'%>
 </div>
 
 <div class="actions">
