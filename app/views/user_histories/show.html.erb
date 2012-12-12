@@ -1,5 +1,5 @@
 <% content_for :heading do %>
-User History Details
+User Story Details
 <% end %>
 
 <p id="notice"><%= notice %></p>
@@ -26,6 +26,8 @@ User History Details
 		<% end %>
 	</fieldset>
 </div>
+
+<br/>
 
 <%= link_to 'Edit', edit_project_user_history_path(@project, @user_history) %> |
 <%= link_to 'Destroy', project_user_history_path(@project, @user_history), :confirm => 'Are you sure?', :method => :delete  %> |

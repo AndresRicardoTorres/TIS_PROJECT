@@ -61,7 +61,7 @@
 <% end %>
 
 <div class="field" data-role="fieldcontain">
-	<label><h3>Functinal Integration Total - Persistence Unadjusted </h3></label>
+	<label><h3>Unadjusted Total Functional Integration - Persistence</h3></label>
 	<%= f.text_field :total_metrics,  :disabled=>true%>
 </div>
 
@@ -73,7 +73,7 @@
 		</div>
 	<ul  data-role="listview" data-split-theme="b">
 		<li>
-			<h3>Business Logic Associated : </h3>
+			<h3>Associated Business Logic: </h3>
 			<%= f.collection_select :business_logic_associated_parameter_id, @bus_logic, :id, :label %>
 			
 		</li>
@@ -92,14 +92,14 @@
 </div>
 
 <div class="field" data-role="fieldcontain">
-	<label><h3>Functional Integration Total - Persistence </h3></label>	
+	<label><h3>Total Functional Integration - Persistence </h3></label>	
 	<%= f.text_field :total_complexity, :disabled=>true %>
 </div>
 
 <div data-role="content">
 	<ul  data-role="listview" data-split-theme="b">
 		<li>
-			<h3>View Type : </h3>
+			<h3>Screen Type : </h3>
 
 			<%  #f.grouped_collection_select(:view_type_parameter_id,@viewtypes,:name,:description,:id,:label)%>
 
@@ -125,7 +125,7 @@
 </div>
 
 <div class="field" data-role="fieldcontain">
-	<label><h3>Complexity Factor Screen </h3></label>		
+	<label><h3>Screen Complexity Factor </h3></label>		
 	<%= f.text_field :view_type_factor , :disabled=>true%>
 </div>
 

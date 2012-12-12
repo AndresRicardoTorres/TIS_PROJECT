@@ -57,7 +57,8 @@ class EstimationsController < ApplicationController
     @view_type_mixed_report = ViewTypeParameter.where(name: "mixed_report")
     @view_type_na = ViewTypeParameter.where(name: "na")
 
-    @view_types = {'Maestro'=>@view_type_master,"Maestro - Detalle"=>@view_type_master_detail,"Proceso"=>@view_type_process,"Interactiva grafica (activeX, applet)"=>@view_type_graphics_interactive,"Reporte basico"=>@view_type_basic_report,"Reporte grafico"=>@view_type_graphic_report,"Reporte mixto"=>@view_type_mixed_report,"No Aplica"=>@view_type_na}
+    # @view_types = {'Maestro'=>@view_type_master,"Maestro - Detalle"=>@view_type_master_detail,"Proceso"=>@view_type_process,"Interactiva grafica (activeX, applet)"=>@view_type_graphics_interactive,"Reporte basico"=>@view_type_basic_report,"Reporte grafico"=>@view_type_graphic_report,"Reporte mixto"=>@view_type_mixed_report,"No Aplica"=>@view_type_na}
+    @view_types = {"Not applicable"=>@view_type_na, 'Master'=>@view_type_master,"Master - Detail"=>@view_type_master_detail,"Process"=>@view_type_process,"Graphics Interactive (activeX, applet)"=>@view_type_graphics_interactive,"Basic Report"=>@view_type_basic_report,"Graphics Report"=>@view_type_graphic_report,"Mixed Report"=>@view_type_mixed_report}
 
   #respond_to do |format|
   #  format.html # new.html.erb
@@ -96,8 +97,9 @@ class EstimationsController < ApplicationController
     @view_type_mixed_report = ViewTypeParameter.where(name: "mixed_report")
     @view_type_na = ViewTypeParameter.where(name: "na")
 
-    @view_types = {'Maestro'=>@view_type_master,"Maestro - Detalle"=>@view_type_master_detail,"Proceso"=>@view_type_process,"Interactiva grafica (activeX, applet)"=>@view_type_graphics_interactive,"Reporte basico"=>@view_type_basic_report,"Reporte grafico"=>@view_type_graphic_report,"Reporte mixto"=>@view_type_mixed_report,"No Aplica"=>@view_type_na}
-
+    # @view_types = {'Maestro'=>@view_type_master,"Maestro - Detalle"=>@view_type_master_detail,"Proceso"=>@view_type_process,"Interactiva grafica (activeX, applet)"=>@view_type_graphics_interactive,"Reporte basico"=>@view_type_basic_report,"Reporte grafico"=>@view_type_graphic_report,"Reporte mixto"=>@view_type_mixed_report,"No Aplica"=>@view_type_na}
+    @view_types = {"Not applicable"=>@view_type_na, 'Master'=>@view_type_master,"Master - Detail"=>@view_type_master_detail,"Process"=>@view_type_process,"Graphics Interactive (activeX, applet)"=>@view_type_graphics_interactive,"Basic Report"=>@view_type_basic_report,"Graphics Report"=>@view_type_graphic_report,"Mixed Report"=>@view_type_mixed_report}
+    
   end
 
   def create
