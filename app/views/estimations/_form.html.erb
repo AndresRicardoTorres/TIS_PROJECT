@@ -174,9 +174,9 @@ $('.ui-page-active #estimation_total_web_points').change(function(){
 });
 
 ///Se calculan los puntos web totales
-$('.ui-page-active #estimation_total_complexity,.ui-page-active select[id="estimation_view_type_parameter_id"],.ui-page-active #estimation_percentage_reuse').change(function(){
+$('.ui-page-active #estimation_total_complexity,.ui-page-active #estimation_view_type_factor,.ui-page-active #estimation_percentage_reuse').change(function(){
 	var TIFP = parseFloat($('#estimation_total_complexity').val());
-	var FTP = parseFloat($('select[id="estimation_view_type_parameter_id"]').val());
+	var FTP = parseFloat($('#estimation_view_type_factor').val());
 	var REUT = parseFloat($('#estimation_percentage_reuse').val());
 	REUT=isNaN(REUT)?0:REUT;
 	var WEB = (TIFP * FTP) * ((100-REUT)/100);
